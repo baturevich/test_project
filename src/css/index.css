@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap&subset=cyrillic,cyrillic-ext,latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,800,900&display=swap&subset=cyrillic');
+
+body {
+  font-family: 'Montserrat', roboto;
+  font-size: 16px;
+  color: #63656b;
+  background-color: #fafafb;
+  overflow-y: scroll;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.CN_wrapper {
+  position: relative;
+}
+
+.d-block {
+  display: block !important;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f1f1f1
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: #f1f1f1
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #5f6368;
+}
+.user_online::after {
+  content: '';
+  position: absolute;
+  bottom: 13%;
+  right: 19%;
+  width: 9px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  background-color: #49f0d3;
+}

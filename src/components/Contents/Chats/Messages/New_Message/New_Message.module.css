@@ -1,0 +1,37 @@
+.wrapper{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.wrapper i{
+    font-size: 20px;
+    margin-right: 20px;
+}
+.wrapper i ::last-child{
+    margin-right: none;
+}
+.message{
+    overflow-y: hidden;
+    border-radius: 5px;
+    width: 100%;
+    background: transparent;
+    padding:10px 10px;
+    border:none;
+    color: #000;
+    font-size: 12px;
+    border:1px solid #d3d9de;
+}
+.message:hover,
+.message:active,
+.message:focus{
+
+}
+.send{
+    margin-left: 20px;
+}
+.send i{
+    font-size: 24px;
+    margin-right: 10px;
+    color: #a6abb6;
+}

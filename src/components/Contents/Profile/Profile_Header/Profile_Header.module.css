@@ -1,0 +1,105 @@
+.pofile__header {
+  position: relative;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.12), inset 0 -1px 0 0 #dadce0;
+}
+
+.profile__cover {
+  border-radius: 5px;
+  width: 100%;
+  min-height: 232px;
+  background: url("https://baturevich.ru/images/cn/bmw.jpg");
+  background-size: cover;
+  background-position: 0 80%;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+}
+
+.profile__preview {
+  padding: 50px 30px;
+  position: relative;
+  display: flex;
+  background-color: #fff;
+  color: #202124;
+  border-radius: 5px;
+}
+
+.soc_net_on_profile {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.soc_net_on_profile__item a {
+  color: #202124;
+  font-size: 22px;
+  margin-right: 20px;
+}
+
+.soc_net_on_profile__item a i {
+  font-weight: 300;
+}
+
+.profile_data {
+  font-size: 14px;
+  text-transform: lowercase;
+  text-align: center;
+  color: #5f6368;
+
+}
+
+.profile_data__number {
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #202124;
+}
+
+.profile__item-main {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+
+}
+
+.short_data_content {
+  justify-content: space-around;
+}
+
+.profile__item_img_block {
+  width: 100% !important;
+  left: 0;
+  top: -50%;
+  position: absolute;
+}
+
+.profile__item {
+  display: flex;
+  align-items: center;
+  width: 33.333%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.profile__img {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 100%;
+}
+
+.profile__name {
+  text-align: center;
+  color: #202124;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.profile_data:last-child {
+  margin-right: 0;
+}

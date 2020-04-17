@@ -1,0 +1,79 @@
+.header{
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    color: #202124;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.12), inset 0 -1px 0 0 #dadce0;
+  }
+  .content{
+    background: #202124 !important;
+  }
+  .header__wrapper{
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header__logo{
+    color: #202124;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .header__logo:hover{
+    color:#202124;
+  }
+  .input_wrapper{
+    display: flex; 
+    align-items: center;
+    position: relative;
+    margin: 0 30px;
+  }
+  .search_input{
+    min-width: 300px;
+    width: 100%;
+    font-size: 14px;
+    border:none;
+    padding: 10px 15px;
+    border-bottom: 1px solid #d3d9de;
+    color:#202124;
+  }
+  .search_btn{
+    position: absolute;
+    color:#7f91a4;
+    right: 5%;
+    top: 30%;
+  }
+  .user_ungle{
+    display: flex;
+    align-items: center;
+    min-width: 120px;
+    justify-content: space-between;
+  }
+  .profile_img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+  }
+  .profile_name{
+    color: #63656b;
+    margin-right: 10px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    transition: all .2s ease;
+  }
+  .profile_name:hover{
+    color: #dcdcdc;
+  }
+  .user_notification{
+    color: #63656b;
+    font-size: 18px;
+    transition: all .2s ease;
+  }
+  .user_notification:hover{
+    color: #dcdcdc;
+  }
