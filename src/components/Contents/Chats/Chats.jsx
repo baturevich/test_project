@@ -3,7 +3,6 @@ import s from './Chats.module.css';
 import Dialogs from './Dialogs/Dialogs';
 import Messages from './Messages/Messages';
 import { Route } from 'react-router-dom';
-import StoreContext from '../../../StoreContext';
 
 
 
@@ -14,8 +13,8 @@ const Chats = (props) => {
     return (
         <div className={s.chats}>
             <div className="row">
-                <Dialogs />
-                <Route path="/chats/sasha-kosulin" render={() => <Messages />} />
+                <Dialogs store={props.store} />
+                <Route path="/chats/sasha-kosulin" render={() => <Messages store={props.store} />} />
                 <Route exact path="/chats">
                     <h1 className={s.preview}>Start messaging...</h1>
                 </Route>

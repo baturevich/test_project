@@ -4,21 +4,14 @@ import Header from './components/main/Header/Header.jsx';
 import Content from './components/main/Content/Content.jsx';
 import LeftSide from './components/main/LeftSide/LeftSide.jsx';
 import RigthSide from './components/main/RightSide/RightSide.jsx';
-import StoreContext from './StoreContext.js';
 
 
 const CN = (props) => {
   return (
     <BrowserRouter>
       <div className="CN_wrapper">
-        <StoreContext.Consumer>
-          {(store) => {
-            return <Header state={store.getState()} />
-            
-            }
-          }
-        </StoreContext.Consumer>
-          <Content />
+        <Header state={props.store.getState()} />
+        <Content store={props.store} />
         <LeftSide />
         <RigthSide />
       </div>

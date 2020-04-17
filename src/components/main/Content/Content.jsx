@@ -9,8 +9,8 @@ import Chats from '../../Contents/Chats/Chats';
 const Content = (props) => {
   return (
     <div className={s.content_container}>
-      <Route path="/profile" render={() => <Profile />} />
-      <Route path="/chats" render={() => <Chats />} />
+      <Route path="/profile" render={() => <Profile store={props.store} />} />
+      <Route path="/chats" render={() => <Chats store={props.store} />} />
     </div>
   );
 }
