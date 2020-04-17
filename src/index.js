@@ -5,15 +5,15 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './css/reset.css';
 import './css/index.css';
 import store from './redux/reduxStore.js';
-import StoreContext from './StoreContext.js';
+import { Provider } from 'react-redux';
 
 
 export const rerenderEntireThree = () =>{
   ReactDOM.render(
     <React.StrictMode>
-      <StoreContext.Provider value={store}>
+      <Provider value={store}>
         <SN/>
-      </StoreContext.Provider>
+      </Provider>
     </React.StrictMode>,
     document.getElementById('root')
   );
