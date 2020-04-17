@@ -4,7 +4,7 @@ import s from './New_Message.module.css'
 
 const New_Message = (props) => {
     let newMessEl = React.createRef();
-    let current_text = props.new_message_data[0].new_message_text;
+    let current_text = props.chats_page.new_message_data[0].new_message_text;
     
     const upNewMessText = () => {
         let mess_text = newMessEl.current.value;

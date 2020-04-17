@@ -21,7 +21,7 @@ import { connect } from 'react-redux';
 // };
 const mapStateToProps = (state)=>{
     return{
-        new_message_data: state.chats_page.new_message_data,
+        chats_page: state.chats_page
     }
 }
 const mapDispathToProps = (dispatch) =>{

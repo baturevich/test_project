@@ -52,7 +52,7 @@ let initialState =   {
 const addPostReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case 'ADD-POST':
+        case 'ADD-POST':{
             let post_text = state.new_post_data[0].new_post_text;
             let newPost = {
                 id: 3,
@@ -63,14 +63,19 @@ const addPostReducer = (state = initialState, action) => {
                 likeCounts: 0,
                 commentCounts: 0
             };
-            if (post_text != "") {
-                state.posts_data.unshift(newPost);
-                state.new_post_data[0].new_post_text = "";
+            let stateCopy = {...state}
+            stateCopy.posts_data = [...state.posts_data]
+            if (post_text != "") {              
+                stateCopy.posts_data.unshift(newPost);
+                stateCopy.new_post_data[0].new_post_text = "";
             };
-            return state;
-        case 'UP-NEW-POST-TEXT':
-            state.new_post_data[0].new_post_text = action.post_text;
-            return state;
+            return stateCopy;
+        }
+        case 'UP-NEW-POST-TEXT':{
+            let stateCopy = {...state}
+            stateCopy.new_post_data[0].new_post_text = action.post_text;
+            return stateCopy;
+        }
         default:
             return state;
     };

@@ -11,7 +11,6 @@ const Messages = (props) => {
     //Maping
     let messagesElement =
         state.messages_data.map(m => <Message name={m.name} text={m.text} imgAdress={m.imgAdress} date={m.date} />);
-
     //
     return (
         <div className="col-md-8">

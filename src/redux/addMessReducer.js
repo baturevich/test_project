@@ -33,8 +33,10 @@ let initialState = {
 };
 
 const addMessReducer = (state = initialState, action) => {
+    debugger;
+    let stateCopy = {...state};
     switch (action.type) {
-        case 'ADD-MESS':
+        case 'ADD-MESS':{
             let mess_text = state.new_message_data[0].new_message_text;
             let new_mess = {
                 id: 1,
@@ -43,26 +45,23 @@ const addMessReducer = (state = initialState, action) => {
                 date: currentData,
                 imgAdress: "https://baturevich.ru/images/cn/user_img.jpg",
             }
-            if (mess_text != "") {
-                state.messages_data.push(new_mess);
-                state.new_message_data[0].new_message_text = "";
-            } else {
-                return;
-            }
-            return state;
-        case 'UP-NEW-MESS-TEXT':
-            state.new_message_data[0].new_message_text = action.mess_text;
-           return state;
+            
+            stateCopy.messages_data = [...state.messages_data];
+            if (mess_text != "") {             
+                stateCopy.messages_data.push(new_mess);
+                stateCopy.new_message_data[0].new_message_text = "";
+            } 
+            return stateCopy;
+        }    
+        case 'UP-NEW-MESS-TEXT':{
+            stateCopy.new_message_data[0].new_message_text = action.mess_text;
+            return stateCopy;
+        }        
         default:
             return state;
     };
 };
 
-export const addMessActionCreate = () => ({
-    type: 'ADD-MES'
-});
-export const upNewMessTextActionCreate = (mess_text) => ({
-    type: 'UP-NEW-MESS-TEXT',
-    mess_text: mess_text
-});
+export const addMessActionCreate = () => ({type: 'ADD-MESS'});
+export const upNewMessTextActionCreate = (mess_text) => ({type: 'UP-NEW-MESS-TEXT', mess_text: mess_text});
 export default addMessReducer;
