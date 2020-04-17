@@ -7,12 +7,12 @@ import './css/index.css';
 import store from './redux/redux-store.js';
 import { Provider } from 'react-redux';
 
-
-
 export const rerenderEntireThree = () =>{
   ReactDOM.render(
     <React.StrictMode>
+      <Provider store={store}>
         <SocNet store={store} />
+      </Provider>
     </React.StrictMode>,
     document.getElementById('root')
   );

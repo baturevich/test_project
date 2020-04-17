@@ -34,7 +34,7 @@ let initialState = {
 
 const addMessReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'addMess':
+        case 'ADD-MESS':
             let mess_text = state.new_message_data[0].new_message_text;
             let new_mess = {
                 id: 1,
@@ -50,7 +50,7 @@ const addMessReducer = (state = initialState, action) => {
                 return;
             }
             return state;
-        case 'upNewMessText':
+        case 'UP-NEW-MESS-TEXT':
             state.new_message_data[0].new_message_text = action.mess_text;
            return state;
         default:
@@ -59,10 +59,10 @@ const addMessReducer = (state = initialState, action) => {
 };
 
 export const addMessActionCreate = () => ({
-    type: 'addMess'
+    type: 'ADD-MES'
 });
 export const upNewMessTextActionCreate = (mess_text) => ({
-    type: 'upNewMessText',
+    type: 'UP-NEW-MESS-TEXT',
     mess_text: mess_text
 });
 export default addMessReducer;

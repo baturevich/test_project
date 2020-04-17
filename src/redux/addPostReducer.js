@@ -52,7 +52,7 @@ let initialState =   {
 const addPostReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case 'addPost':
+        case 'ADD-POST':
             let post_text = state.new_post_data[0].new_post_text;
             let newPost = {
                 id: 3,
@@ -68,7 +68,7 @@ const addPostReducer = (state = initialState, action) => {
                 state.new_post_data[0].new_post_text = "";
             };
             return state;
-        case 'upNewPostText':
+        case 'UP-NEW-POST-TEXT':
             state.new_post_data[0].new_post_text = action.post_text;
             return state;
         default:
@@ -77,6 +77,6 @@ const addPostReducer = (state = initialState, action) => {
 
 };
 
-export const addPostActionCreate = () => ({type: 'addPost'});
-export const upNewPostTextActionCreate = (post_text) => ({type: 'upNewPostText',post_text: post_text});
+export const addPostActionCreate = () => ({type: 'ADD-POST'});
+export const upNewPostTextActionCreate = (post_text) => ({type: 'UP-NEW-POST-TEXT',post_text: post_text});
 export default addPostReducer;

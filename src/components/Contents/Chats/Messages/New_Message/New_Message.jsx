@@ -3,7 +3,6 @@ import s from './New_Message.module.css'
 
 
 const New_Message = (props) => {
-    debugger;
     let newMessEl = React.createRef();
     let current_text = props.new_message_data[0].new_message_text;
     
