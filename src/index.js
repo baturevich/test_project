@@ -8,13 +8,14 @@ import store from './redux/reduxStore.js';
 import { Provider } from 'react-redux';
 
 
+
 export const rerenderEntireThree = () =>{
   ReactDOM.render(
     <React.StrictMode>
       <Provider value={store}>
         <SN/>
       </Provider>
-    </React.StrictMode>
+    </React.StrictMode>,
     document.getElementById('root')
   );
 }; 
