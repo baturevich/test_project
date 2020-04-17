@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CN from './CN.jsx';
+import SN from './SN.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './css/reset.css';
 import './css/index.css';
@@ -12,7 +12,7 @@ export const rerenderEntireThree = () =>{
   ReactDOM.render(
     <React.StrictMode>
       <StoreContext.Provider value={store}>
-        <CN/>
+        <SN/>
       </StoreContext.Provider>
     </React.StrictMode>,
     document.getElementById('root')
