@@ -14,7 +14,7 @@ export const rerenderEntireThree = () =>{
       <Provider value={store}>
         <SN/>
       </Provider>
-    </React.StrictMode>,
+    </React.StrictMode>
     document.getElementById('root')
   );
 }; 
