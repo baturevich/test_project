@@ -1,11 +1,12 @@
 import { createStore, combineReducers } from "redux";
-import addPostReducer from "./addPostReducer";
-import addMessReducer from "./addMessReducer";
 import headerReducer from "./headerReducer";
+import profilePageReducer from "./profilePageReducer";
+import chatsPageReducer from "./chatsPageReducer";
+
 
 let reducers = combineReducers({
-    profile_page: addPostReducer,
-    chats_page: addMessReducer,
+    profile_page: profilePageReducer,
+    chats_page: chatsPageReducer,
     header: headerReducer,
 })
 let store = createStore(reducers);

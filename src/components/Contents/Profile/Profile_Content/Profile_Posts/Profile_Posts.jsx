@@ -10,6 +10,7 @@ const Profile_Posts = (props) => {
     let postsElements =
         state.profile_page.posts_data.map(p => <Post name={p.name}
             date={p.date} text={p.text}
+            key={p.key}
             likeCounts={p.likeCounts}
             commentCounts={p.commentCounts}
             imgAdress={p.imgAdress} />);

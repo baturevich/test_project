@@ -8,7 +8,7 @@ import Dialog from './Dialog/Dialog';
 const Dialogs = (props) => {
     let state = props.store.getState().chats_page
     let dialogsElement =
-        state.dialogs_data.map(d => <Dialog name={d.name} path={d.path} imgAdress={d.imgAdress} />);
+        state.dialogs_data.map(d => <Dialog key={d.key} name={d.name} path={d.path} imgAdress={d.imgAdress} />);
     //
     return (
         <div className="col-md-4">

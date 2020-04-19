@@ -12,6 +12,7 @@ const Profile = (props) => {
         state.profile_page.user_data.map(u => <Profile_Header
             imgAdress={u.imgAdress}
             name={u.name}
+            key={u.key}
             posts_count={u.posts_count}
             friends_count={u.friends_count}
             followers_count={u.followers_count}

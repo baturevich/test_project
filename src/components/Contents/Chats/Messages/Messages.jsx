@@ -10,7 +10,7 @@ const Messages = (props) => {
     let state = props.store.getState().chats_page;
     //Maping
     let messagesElement =
-        state.messages_data.map(m => <Message name={m.name} text={m.text} imgAdress={m.imgAdress} date={m.date} />);
+        state.messages_data.map(m => <Message name={m.name} key={m.key} text={m.text} imgAdress={m.imgAdress} date={m.date} />);
     //
     return (
         <div className="col-md-8">

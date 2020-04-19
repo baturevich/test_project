@@ -26,37 +26,38 @@ let initialState = {
             path: "/evgeny-baturevich"
         },
     ],
-    new_message_data: [{
+    new_message_data: {
         id: 1,
         new_message_text: "",
-    }],
+    },
 };
 
-const addMessReducer = (state = initialState, action) => {
-    debugger;
-    let stateCopy = {...state};
+const chatsPageReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'UP-NEW-MESS-TEXT':{
+            let state_copy = {...state};
+            state_copy.new_message_data  = {...state.new_message_data};
+            state_copy.new_message_data.new_message_text = action.mess_text;
+            return state_copy;
+        }       ; 
         case 'ADD-MESS':{
-            let mess_text = state.new_message_data[0].new_message_text;
+            let mess_text = state.new_message_data.new_message_text
             let new_mess = {
                 id: 1,
                 name: "Kirill Baturevich",
                 text: mess_text,
                 date: currentData,
                 imgAdress: "https://baturevich.ru/images/cn/user_img.jpg",
-            }
-            
-            stateCopy.messages_data = [...state.messages_data];
+            };
             if (mess_text != "") {             
-                stateCopy.messages_data.push(new_mess);
-                stateCopy.new_message_data[0].new_message_text = "";
-            } 
-            return stateCopy;
+                let state_copy = {...state};
+                state_copy.new_message_data  = {...state.new_message_data};
+                state_copy.messages_data = [...state.messages_data];
+                state_copy.messages_data.push(new_mess);
+                state_copy.new_message_data.new_message_text = '';  
+                return state_copy  
+            };          
         }    
-        case 'UP-NEW-MESS-TEXT':{
-            stateCopy.new_message_data[0].new_message_text = action.mess_text;
-            return stateCopy;
-        }        
         default:
             return state;
     };
@@ -64,4 +65,4 @@ const addMessReducer = (state = initialState, action) => {
 
 export const addMessActionCreate = () => ({type: 'ADD-MESS'});
 export const upNewMessTextActionCreate = (mess_text) => ({type: 'UP-NEW-MESS-TEXT', mess_text: mess_text});
-export default addMessReducer;
+export default chatsPageReducer;

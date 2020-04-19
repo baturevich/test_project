@@ -1,3 +1,5 @@
+import chatsPageReducer from "./chatsPageReducer";
+
 let now = new Date(),
     day = now.getDate(),
     month = now.getMonth(),
@@ -34,12 +36,12 @@ let initialState =   {
         music_count: 15,
         videos_count: 9,
     }],
-    new_post_data: [{
+    new_post_data:{
         id: 1,
         imgAdress: "https://baturevich.ru/images/cn/user_img.jpg",
-        new_post_text: "",
-    }],
-    posts_data: [{
+        new_post_text: "i can do it",
+    },
+    posts_data:[{
         id: 1,
         name: "Kirill Baturevich",
         date: '11 Apr at 3:40 ',
@@ -49,11 +51,17 @@ let initialState =   {
         commentCounts: 56
     },]
 };
-const addPostReducer = (state = initialState, action) => {
+const profilePageReducer = (state = initialState, action) => {
 
     switch (action.type) {
+        case 'UP-NEW-POST-TEXT':{
+            let state_copy = {...state};
+            state_copy.new_post_data = {...state.new_post_data};
+            state_copy.new_post_data.new_post_text = action.post_text;
+            return state_copy;
+        }
         case 'ADD-POST':{
-            let post_text = state.new_post_data[0].new_post_text;
+            let post_text = state.new_post_data.new_post_text;
             let newPost = {
                 id: 3,
                 name: "Kirill Baturevich",
@@ -62,19 +70,15 @@ const addPostReducer = (state = initialState, action) => {
                 imgAdress: "https://baturevich.ru/images/cn/user_img.jpg",
                 likeCounts: 0,
                 commentCounts: 0
-            };
-            let stateCopy = {...state}
-            stateCopy.posts_data = [...state.posts_data]
-            if (post_text != "") {              
-                stateCopy.posts_data.unshift(newPost);
-                stateCopy.new_post_data[0].new_post_text = "";
-            };
-            return stateCopy;
-        }
-        case 'UP-NEW-POST-TEXT':{
-            let stateCopy = {...state}
-            stateCopy.new_post_data[0].new_post_text = action.post_text;
-            return stateCopy;
+            };        
+            if(post_text != ''){
+                let state_copy = {...state};
+                state_copy.posts_data = [...state.posts_data];
+                state_copy.new_post_data = {...state.new_post_data};
+                state_copy.posts_data.unshift(newPost);
+                state_copy.new_post_data.new_post_text = '';
+                return state_copy;
+            }       
         }
         default:
             return state;
@@ -82,6 +86,7 @@ const addPostReducer = (state = initialState, action) => {
 
 };
 
-export const addPostActionCreate = () => ({type: 'ADD-POST'});
+
 export const upNewPostTextActionCreate = (post_text) => ({type: 'UP-NEW-POST-TEXT',post_text: post_text});
-export default addPostReducer;
+export const addPostActionCreate = () => ({type: 'ADD-POST'});
+export default profilePageReducer;
