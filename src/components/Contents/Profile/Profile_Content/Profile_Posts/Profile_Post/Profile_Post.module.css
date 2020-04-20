@@ -37,10 +37,14 @@
     top: 10px;
     right: 0;
     width: 22px;
+    cursor: pointer;
     height: 24px;
     font-size: 20px;
     margin-left: auto;
     display: flex;
+}
+.action i{
+    cursor: pointer;
 }
 
 .post_content {

@@ -1,4 +1,4 @@
-import chatsPageReducer from "./chatsPageReducer";
+
 
 let now = new Date(),
     day = now.getDate(),
@@ -52,15 +52,16 @@ let initialState =   {
     },]
 };
 const profilePageReducer = (state = initialState, action) => {
+    debugger;
 
     switch (action.type) {
-        case 'UP-NEW-POST-TEXT':{
+        case 'UP_NEW_POST_TEXT':{
             let state_copy = {...state};
             state_copy.new_post_data = {...state.new_post_data};
             state_copy.new_post_data.new_post_text = action.post_text;
             return state_copy;
         }
-        case 'ADD-POST':{
+        case 'ADD_POST':{
             let post_text = state.new_post_data.new_post_text;
             let newPost = {
                 id: 3,
@@ -80,13 +81,27 @@ const profilePageReducer = (state = initialState, action) => {
                 return state_copy;
             }       
         }
+        case 'DELETE_POST':{
+            let state_copy = {
+                ...state,
+                posts_data: state.posts_data.filter( p =>{
+                    if(p.id != action.post_id){
+                        return p
+                    }
+                })
+            }
+            return state_copy 
+        }
         default:
             return state;
     };
+    
 
 };
 
 
-export const upNewPostTextActionCreate = (post_text) => ({type: 'UP-NEW-POST-TEXT',post_text: post_text});
-export const addPostActionCreate = () => ({type: 'ADD-POST'});
+
+export const upNewPostTextActionCreate = (post_text) => ({type: 'UP_NEW_POST_TEXT',post_text: post_text});
+export const addPostActionCreate = () => ({type: 'ADD_POST'});
+export const deletePostAC = (post_id) => ({type: 'DELETE_POST', post_id: post_id})
 export default profilePageReducer;
