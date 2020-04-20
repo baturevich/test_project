@@ -7,7 +7,6 @@ import Profile_Post_Container from './Profile_Post/Profile_Post_Container';
 
 
 const Profile_Posts = (props) => {
-    let state = props.store.getState();
 
     return (
         <div className={`${s.content} col-sm-8`}>

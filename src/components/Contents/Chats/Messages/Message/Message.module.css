@@ -24,6 +24,7 @@
 }
 
 .text {
+    position: relative;
     background: #f5f5f5;
     min-width: 100%;
     line-height: 1.2em;
@@ -34,6 +35,14 @@
     border-radius: 5px;
     max-width: 60%;
     margin-top: 20px;
+}
+.date i{
+    cursor: pointer;
+    font-size: 14px;
+    color: #ccc;
+    right: 0;
+    margin-left: 5px;
+    top: 0;
 }
 
 .img_and_date {

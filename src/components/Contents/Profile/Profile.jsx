@@ -22,7 +22,7 @@ const Profile = (props) => {
     return (
         <div className={s.profile}>
             {profile_HeaderElements}
-            <Profile_Content store={props.store} />
+            <Profile_Content/>
         </div>
     );
 

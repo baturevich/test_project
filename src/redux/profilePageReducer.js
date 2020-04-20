@@ -82,7 +82,7 @@ const profilePageReducer = (state = initialState, action) => {
             }       
         }
         case 'DELETE_POST':{
-            let state_copy = {
+            return {
                 ...state,
                 posts_data: state.posts_data.filter( p =>{
                     if(p.id != action.post_id){
@@ -90,7 +90,6 @@ const profilePageReducer = (state = initialState, action) => {
                     }
                 })
             }
-            return state_copy 
         }
         default:
             return state;
@@ -101,7 +100,7 @@ const profilePageReducer = (state = initialState, action) => {
 
 
 
-export const upNewPostTextActionCreate = (post_text) => ({type: 'UP_NEW_POST_TEXT',post_text: post_text});
-export const addPostActionCreate = () => ({type: 'ADD_POST'});
+export const upNewPostTextAC = (post_text) => ({type: 'UP_NEW_POST_TEXT',post_text: post_text});
+export const addPostAC = () => ({type: 'ADD_POST'});
 export const deletePostAC = (post_id) => ({type: 'DELETE_POST', post_id: post_id})
 export default profilePageReducer;

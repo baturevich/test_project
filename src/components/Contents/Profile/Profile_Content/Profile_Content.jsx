@@ -9,8 +9,7 @@ const Profile_Content = (props) => {
     return (
         <div className="row">
             <Profile_Left_Side />
-            <Profile_Posts  store={props.store} 
-            />
+            <Profile_Posts  />
         </div>
     );
 };
