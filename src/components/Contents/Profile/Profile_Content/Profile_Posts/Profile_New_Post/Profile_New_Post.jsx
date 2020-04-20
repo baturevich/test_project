@@ -4,7 +4,7 @@ import s from './Profile_New_Post.module.css';
 
 const Profile_New_Post = (props) => {
 
-    // let imgAdress = props.profile_page.new_post_data.imgAdress;
+    // let imgUrl = props.profile_page.new_post_data.imgUrl;
     // let new_post_text = props.profile_page.new_post_data.new_post_text;
     
     let textarea = React.createRef();
@@ -31,7 +31,7 @@ const Profile_New_Post = (props) => {
             </div>
             <div className={s.post}>
                 <div className={s.wrapper}>
-                    <img src={props.imgAdress} alt="User-img" className={s.user_img} />
+                    <img src={props.imgUrl} alt="User-img" className={s.user_img} />
                     <textarea name="New post"
                         className={s.post_text}
                         onChange={upNewPostText}

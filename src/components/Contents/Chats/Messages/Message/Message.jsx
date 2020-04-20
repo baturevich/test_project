@@ -8,7 +8,7 @@ const Message = (props) => {
             <div className={`${s.my_message}`}>
                 <p className={s.text}>{m.text} </p>
                 <div className={s.img_and_date}>
-                    <img src={m.imgAdress} alt="User-img" className={s.mes_img} />
+                    <img src={m.imgUrl} alt="User-img" className={s.mes_img} />
                     <p className={s.date}>{m.date}<i className="fa fa-close" onClick={()=>props.mess_delete(m.id)}></i></p>
                 </div>
             </div>

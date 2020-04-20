@@ -4,12 +4,12 @@ import { NavLink } from 'react-router-dom';
 
 const Mes_Header = (props) => {
     let user_name = props.name;
-    let imgAdress = props.imgAdress;
+    let imgUrl = props.imgUrl;
     let date = props.date;
     return (
         <div className={s.header}>
             <NavLink className={s.profile} to="/profile">
-                <img src={imgAdress} alt="User_img" className={s.user_img} />
+                <img src={imgUrl} alt="User_img" className={s.user_img} />
             </NavLink>
             <div className="nmd">
                 <NavLink to="/profile" className={s.name}>{user_name}</NavLink>

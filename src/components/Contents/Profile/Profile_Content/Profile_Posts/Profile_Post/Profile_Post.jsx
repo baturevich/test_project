@@ -7,7 +7,7 @@ const Profile_Post = (props) => {
         return (
             <div className={s.post}>
                 <div className={s.post_data}>
-                    <img src={p.imgAdress}
+                    <img src={p.imgUrl}
                         className={s.user_img} />
                     <div className={s.name_and_date}>
                         <p className={s.name}>{p.name}</p>

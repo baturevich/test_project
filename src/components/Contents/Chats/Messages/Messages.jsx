@@ -12,7 +12,7 @@ const Messages = (props) => {
         <div className="col-md-8">
             <div className={s.messages}>
                 <Mes_Header name={state.mes_header_data[0].name} 
-                imgAdress={state.mes_header_data[0].imgAdress} 
+                imgUrl={state.mes_header_data[0].imgUrl} 
                 date={state.mes_header_data[0].date} />
                 <div className={s.all_mes}>
                     <Message_Container />

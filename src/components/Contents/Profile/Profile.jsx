@@ -10,7 +10,7 @@ const Profile = (props) => {
     //Maping
     let profile_HeaderElements =
         state.profile_page.user_data.map(u => <Profile_Header
-            imgAdress={u.imgAdress}
+            imgUrl={u.imgUrl}
             name={u.name}
             key={u.key}
             posts_count={u.posts_count}

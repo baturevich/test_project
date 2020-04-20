@@ -16,7 +16,7 @@ const Profile_Header = (props) => {
                 <li className={s.soc_net_on_profile__item}><a href="##"><i className="fa fa-paper-plane-o"></i></a></li>
               </ul>
             </div>
-            <div className={`${s.profile__item} ${s.profile__item_img_block}`}><img src={props.imgAdress}
+            <div className={`${s.profile__item} ${s.profile__item_img_block}`}><img src={props.imgUrl}
               alt="Kirill Baturevich" className={s.profile__img} />
             </div>
             <div className={`${s.profile__item} d-block`}>

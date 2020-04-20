@@ -13,7 +13,7 @@ const Header = (props) => {
         <div className={s.user_ungle}>
           <a href="" className={s.user_notification}><i className="fa fa-bell-o"></i></a>
           <a href="#s" className={s.profile_name}>{props.state.header.header_data[0].name}</a>
-          <img src={props.state.header.header_data[0].imgAdress} alt="profile-picture" className={s.profile_img} />
+          <img src={props.state.header.header_data[0].imgUrl} alt="profile-picture" className={s.profile_img} />
         </div>
       </div>
     </header>

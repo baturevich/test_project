@@ -1,35 +1,7 @@
-let now = new Date(),
-    hour = now.getHours(),
-    minutes = now.getMinutes();
-if (minutes < 10) {
-    minutes = "0" + minutes;
-}
-let currentData = hour + ":" + minutes;
-
 let initialState = {
-    messages_data: [],
-    mes_header_data: [{
-        name: "Sasha kosulin",
-        imgUrl: "https://sun9-28.userapi.com/c837137/v837137989/357b6/_k2vjy5x_u0.jpg",
-        date: "Last seen today at 3:40 AM"
-    }],
-    dialogs_data: [{
-            id: 1,
-            name: "Sasha Kosulin",
-            imgUrl: "https://sun9-28.userapi.com/c837137/v837137989/357b6/_k2vjy5x_u0.jpg",
-            path: "/sasha-kosulin"
-        },
-        {
-            id: 2,
-            name: "Evgeny Baturevich",
-            imgUrl: "https://sun9-63.userapi.com/c849028/v849028934/3c13b/cfPvKS7D5Fo.jpg",
-            path: "/evgeny-baturevich"
-        },
-    ],
-    new_message_data: {
-        id: 1,
-        new_message_text: "",
-    },
+    users : [
+        {id:1, followed: true, imgURL}
+    ]
 };
 
 const chatsPageReducer = (state = initialState, action) => {

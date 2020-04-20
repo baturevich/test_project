@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 let mapStateToProps = (state) => {
     return {
-        imgAdress: state.profile_page.new_post_data.imgAdress,
+        imgUrl: state.profile_page.new_post_data.imgUrl,
         new_post_text: state.profile_page.new_post_data.new_post_text,
     }
 };

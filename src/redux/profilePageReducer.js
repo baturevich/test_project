@@ -28,7 +28,7 @@ let currentData = day + " " + fmonth + " at " + hour + ":" + minutes;
 let initialState =   {
     user_data: [{
         id: 1,
-        imgAdress: "https://baturevich.ru/images/cn/user_img.jpg",
+        imgUrl: "https://baturevich.ru/images/cn/user_img.jpg",
         name: "Kirill Baturevich",
         posts_count: 1,
         friends_count: 2,
@@ -38,7 +38,7 @@ let initialState =   {
     }],
     new_post_data:{
         id: 1,
-        imgAdress: "https://baturevich.ru/images/cn/user_img.jpg",
+        imgUrl: "https://baturevich.ru/images/cn/user_img.jpg",
         new_post_text: "i can do it",
     },
     posts_data:[{
@@ -46,7 +46,7 @@ let initialState =   {
         name: "Kirill Baturevich",
         date: '11 Apr at 3:40 ',
         text: "Hello my name is Kirill",
-        imgAdress: "https://baturevich.ru/images/cn/user_img.jpg",
+        imgUrl: "https://baturevich.ru/images/cn/user_img.jpg",
         likeCounts: 137,
         commentCounts: 56
     },]
@@ -68,7 +68,7 @@ const profilePageReducer = (state = initialState, action) => {
                 name: "Kirill Baturevich",
                 date: currentData,
                 text: post_text,
-                imgAdress: "https://baturevich.ru/images/cn/user_img.jpg",
+                imgUrl: "https://baturevich.ru/images/cn/user_img.jpg",
                 likeCounts: 0,
                 commentCounts: 0
             };        
