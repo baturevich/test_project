@@ -52,8 +52,6 @@ let initialState =   {
     },]
 };
 const profilePageReducer = (state = initialState, action) => {
-    debugger;
-
     switch (action.type) {
         case 'UP_NEW_POST_TEXT':{
             let state_copy = {...state};

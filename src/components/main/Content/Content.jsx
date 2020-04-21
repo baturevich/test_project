@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import Profile from '../../Contents/Profile/Profile';
 import s from './Content.module.css'
 import Chats from '../../Contents/Chats/Chats';
+import Users from '../../Contents/Users/Users';
 
 
 
@@ -11,6 +12,7 @@ const Content = (props) => {
     <div className={s.content_container}>
       <Route path="/profile" render={() => <Profile store={props.store} />} />
       <Route path="/chats" render={() => <Chats store={props.store} />} />
+      <Route path='/users' render={()=> <Users />} />
     </div>
   );
 }

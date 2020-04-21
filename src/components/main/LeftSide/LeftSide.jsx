@@ -16,7 +16,7 @@ const LeftSide = () => {
           <NavLink to="/chats" className={s.menu__link}><i className="fa fa-comments"></i></NavLink>
         </li>
         <li className={s.menu__item}>
-          <NavLink to="/friends" className={s.menu__link}><i className="fa fa-users"></i></NavLink>
+          <NavLink to="/users" className={s.menu__link}><i className="fa fa-users"></i></NavLink>
         </li>       
         <li className={s.menu__item}>
           <NavLink to="/videos" className={s.menu__link}><i className="fa fa-video-camera"></i></NavLink>

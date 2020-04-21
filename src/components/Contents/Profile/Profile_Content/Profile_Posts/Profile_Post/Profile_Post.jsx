@@ -2,7 +2,6 @@ import React from 'react';
 import s from './Profile_Post.module.css';
 
 const Profile_Post = (props) => {
-    debugger;
     return props.profile_page.posts_data.map(p => {
         return (
             <div className={s.post}>
