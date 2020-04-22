@@ -38,7 +38,6 @@ let initialState =   {
     }],
     new_post_data:{
         id: 1,
-        imgUrl: "https://baturevich.ru/images/cn/user_img.jpg",
         new_post_text: "i can do it",
     },
     posts_data:[{

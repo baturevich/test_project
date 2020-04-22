@@ -7,8 +7,9 @@ import { connect } from 'react-redux';
 
 
 let mapStateToProps = (state) => {
+    debugger;
     return {
-        imgUrl: state.profile_page.new_post_data.imgUrl,
+        imgUrl: state.profile_page.user_data[0].imgUrl,
         new_post_text: state.profile_page.new_post_data.new_post_text,
     }
 };

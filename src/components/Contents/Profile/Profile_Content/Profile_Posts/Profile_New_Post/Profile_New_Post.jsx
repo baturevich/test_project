@@ -3,9 +3,6 @@ import s from './Profile_New_Post.module.css';
 
 
 const Profile_New_Post = (props) => {
-
-    // let imgUrl = props.profile_page.new_post_data.imgUrl;
-    // let new_post_text = props.profile_page.new_post_data.new_post_text;
     
     let textarea = React.createRef();
     let addPost = () => {
