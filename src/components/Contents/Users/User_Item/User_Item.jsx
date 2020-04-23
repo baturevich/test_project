@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './User_Item.module.css';
+import { NavLink } from 'react-router-dom';
 
 const User_Item  =(props) =>{
     let pagesCount = Math.ceil( props.totalUsersCount / props.pageSize);
@@ -24,11 +25,13 @@ const User_Item  =(props) =>{
                return <div className="row">
                     <div className="col-md-12">
                         <div className={s.user}>
-                            <img src={u.photos.small
+                            <NavLink to={`/profile/${u.id}`} onClick={()=>{props.onClickUser(u.id)}} >
+                                <img src={u.photos.small
                                 ? u.photos.small
                                 : 'https://baturevich.ru/images/cn/user2.jpg'} alt="user-img" />
+                            </NavLink> 
                             <div className={s.name_and_city}>
-                                <p className={s.name}>{u.name}</p>
+                                <p className={s.name} >{u.name}</p>
                                 <p className={s.city}>{u.city ? u.city : 'Chelyabinsk'}</p>
                             </div>
 

@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Profile_Header.module.css';
 
 const Profile_Header = (props) => {
+  let imgUrl = props.user_data.imgUrl ? props.user_data.imgUrl : "https://baturevich.ru/images/cn/user2.jpg";
   return (
     <div className="row">
       <div className="col-sm-12">
@@ -16,27 +17,28 @@ const Profile_Header = (props) => {
                 <li className={s.soc_net_on_profile__item}><a href="##"><i className="fa fa-paper-plane-o"></i></a></li>
               </ul>
             </div>
-            <div className={`${s.profile__item} ${s.profile__item_img_block}`}><img src={props.imgUrl}
-              alt="Kirill Baturevich" className={s.profile__img} />
+            <div className={`${s.profile__item} ${s.profile__item_img_block}`}>
+              <img src={imgUrl}
+              alt="User_img" className={s.profile__img} />
             </div>
             <div className={`${s.profile__item} d-block`}>
               <h1 className={s.profile__name}>{props.name}</h1>
             </div>
             <div className={`${s.profile__item} ${s.short_data_content}`}>
               <div className={s.profile_data}>
-                <p className={s.profile_data__number}>{props.posts_count}</p>Posts
+                <p className={s.profile_data__number}>{props.user_data.posts_count}</p>Posts
                 </div>
               <div className={s.profile_data}>
-                <p className={s.profile_data__number}>{props.friends_count}</p>Friends
+                <p className={s.profile_data__number}>{props.user_data.friends_count}</p>Friends
                 </div>
               <div className={s.profile_data}>
-                <p className={s.profile_data__number}>{props.music_count}</p>Music
+                <p className={s.profile_data__number}>{props.user_data.music_count}</p>Music
                 </div>
               <div className={s.profile_data}>
-                <p className={s.profile_data__number}>{props.videos_count}</p>Videos
+                <p className={s.profile_data__number}>{props.user_data.videos_count}</p>Videos
                 </div>
               <div className={s.profile_data}>
-                <p className={s.profile_data__number}>{props.followers_count}</p>Followers
+                <p className={s.profile_data__number}>{props.user_data.followers_count}</p>Followers
                 </div>
             </div>
           </div>

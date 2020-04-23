@@ -26,29 +26,24 @@ switch (month) {
 let currentData = day + " " + fmonth + " at " + hour + ":" + minutes;
 
 let initialState =   {
-    user_data: [{
+    user_data: {
+
+    },
+    user_data_default: {
         id: 1,
-        imgUrl: "https://baturevich.ru/images/cn/user_img.jpg",
-        name: "Kirill Baturevich",
+        imgUrl: "https://baturevich.ru/images/cn/user2.jpg",
+        name: "No name",
         posts_count: 1,
         friends_count: 2,
         followers_count: 999,
         music_count: 15,
         videos_count: 9,
-    }],
+    },
     new_post_data:{
         id: 1,
         new_post_text: "i can do it",
     },
-    posts_data:[{
-        id: 1,
-        name: "Kirill Baturevich",
-        date: '11 Apr at 3:40 ',
-        text: "Hello my name is Kirill",
-        imgUrl: "https://baturevich.ru/images/cn/user_img.jpg",
-        likeCounts: 137,
-        commentCounts: 56
-    },]
+    posts_data:[],
 };
 const profilePageReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -60,12 +55,13 @@ const profilePageReducer = (state = initialState, action) => {
         }
         case 'ADD_POST':{
             let post_text = state.new_post_data.new_post_text;
+            let imgUrl = state.user_data.imgUrl ? state.user_data.imgUrl : state.user_data_default.imgUrl
             let newPost = {
                 id: 3,
-                name: "Kirill Baturevich",
+                name: state.user_data.name ? state.user_data.name : state.user_data_default.name ,
                 date: currentData,
                 text: post_text,
-                imgUrl: "https://baturevich.ru/images/cn/user_img.jpg",
+                imgUrl: imgUrl,
                 likeCounts: 0,
                 commentCounts: 0
             };        
@@ -88,6 +84,12 @@ const profilePageReducer = (state = initialState, action) => {
                 })
             }
         }
+        case 'SET_USER_DATA':{
+            return {
+                ...state,
+                user_data: action.user_data
+            }
+        }
         default:
             return state;
     };
@@ -97,7 +99,8 @@ const profilePageReducer = (state = initialState, action) => {
 
 
 
-export const upNewPostTextAC = (post_text) => ({type: 'UP_NEW_POST_TEXT',post_text: post_text});
+export const upNewPostTextAC = (post_text) => ({type: 'UP_NEW_POST_TEXT', post_text});
 export const addPostAC = () => ({type: 'ADD_POST'});
-export const deletePostAC = (post_id) => ({type: 'DELETE_POST', post_id: post_id})
+export const deletePostAC = (post_id) => ({type: 'DELETE_POST', post_id})
+export const setUserDataAC = (user_data) => ({type: 'SET_USER_DATA', user_data})
 export default profilePageReducer;

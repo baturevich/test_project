@@ -3,6 +3,7 @@ let initialState = {
     pageSize: 10,
     totalUsersCount:0,
     currentPage: 1,
+    isLoading: false,
 };
 
 const userPageReducer = (state = initialState, action) => {
@@ -35,8 +36,11 @@ const userPageReducer = (state = initialState, action) => {
         case 'SET_CURRENT_PAGE':{
             return{...state, currentPage: action.current_page}
         }
-        case 'SET_TOTAL_USER_COUNT':{
+        case 'SET_TOTAL_USERS_COUNT':{
             return{...state, totalUsersCount: action.user_count}
+        }
+        case 'IS_LOADING':{
+            return{...state, isLoading: action.answer}
         }
          default :{
             return state
@@ -47,6 +51,8 @@ const userPageReducer = (state = initialState, action) => {
 export const followAC = (user_id) => ({type: 'FOLLOW', user_id: user_id});
 export const unfollowAC = (user_id) => ({type: 'UNFOLLOW', user_id: user_id});
 export const setUsersAC = (users) => ({type: 'SET_USERS', users: users});
-export const setCurrentPagesAC = (current_page) => ({type: 'SET_CURRENT_PAGE', current_page});
-export const setTotalUserCountAC = (user_count) => ({type: 'SET_TOTAL_USER_COUNT', user_count});
+export const setCurrentPageAC = (current_page) => ({type: 'SET_CURRENT_PAGE', current_page});
+export const setTotalUsersCountAC = (user_count) => ({type: 'SET_TOTAL_USERS_COUNT', user_count});
+export const isLoadingAC = (answer) => ({type: 'IS_LOADING', answer});
+
 export default userPageReducer;

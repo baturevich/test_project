@@ -34,7 +34,6 @@
     transition: all .2s ease;
 }
 .pagination{
-    overflow-x: scroll;
     padding: 15px 0;
     display: flex;
     justify-content: center;
