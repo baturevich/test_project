@@ -19,7 +19,7 @@
 .city{
     font-size: 14px;
 }
-.user span{
+.user button{
     cursor: pointer;
     font-size: 14px;
     display: block;
@@ -29,9 +29,12 @@
     text-align: center;
     border-radius: 5px;
     color: #fff;
+    border: none;
     margin-left: auto;
-    border: 2px solid transparent;
     transition: all .2s ease;
+}
+.user button:disabled{
+    background: #e90028;
 }
 .pagination{
     padding: 15px 0;
@@ -41,9 +44,36 @@
     border-bottom: 1px solid #f1f1f1;
 }
 .pagination li{
+    position: relative;
+    display: block;
+    max-width: 20px;
+    min-width: 20px;
+    text-align: center;
     margin-right: 10px;
     cursor: pointer;
+    border-bottom: 1px solid transparent;
 }
 .selected{
- font-weight: 600;
+    
+    font-weight: 600;
+}
+.selected::after{
+    content:'';
+    position: absolute;
+    bottom: -20%;
+    left: 45%; 
+    transform: rotate(45deg);
+    background: #000;
+    width: 7px;
+    height: 1px;
+}
+.selected::before{
+    content:'';
+    position: absolute;
+    right: 45%;
+    bottom: -20%;
+    transform: rotate(135deg);
+    background: #000;
+    width: 7px;
+    height: 1px;
 }

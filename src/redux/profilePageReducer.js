@@ -1,3 +1,4 @@
+import { ProfileAPI } from "../API/Api";
 
 
 let now = new Date(),
@@ -29,6 +30,11 @@ let initialState =   {
     user_data: {
 
     },
+    new_post_data:{
+        id: 1,
+        new_post_text: "i can do it",
+    },
+    posts_data:[],
     user_data_default: {
         id: 1,
         imgUrl: "https://baturevich.ru/images/cn/user2.jpg",
@@ -39,11 +45,7 @@ let initialState =   {
         music_count: 15,
         videos_count: 9,
     },
-    new_post_data:{
-        id: 1,
-        new_post_text: "i can do it",
-    },
-    posts_data:[],
+    isLoading: false,
 };
 const profilePageReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -90,6 +92,9 @@ const profilePageReducer = (state = initialState, action) => {
                 user_data: action.user_data
             }
         }
+        case 'IS_LOADING':{
+            return{...state, isLoading: action.answer}
+        }
         default:
             return state;
     };
@@ -101,6 +106,20 @@ const profilePageReducer = (state = initialState, action) => {
 
 export const upNewPostTextAC = (post_text) => ({type: 'UP_NEW_POST_TEXT', post_text});
 export const addPostAC = () => ({type: 'ADD_POST'});
-export const deletePostAC = (post_id) => ({type: 'DELETE_POST', post_id})
-export const setUserDataAC = (user_data) => ({type: 'SET_USER_DATA', user_data})
+export const deletePostAC = (post_id) => ({type: 'DELETE_POST', post_id});
+export const setUserDataAC = (user_data) => ({type: 'SET_USER_DATA', user_data});
+export const ProfileIsLoadingAC = (answer) => ({type: 'IS_LOADING', answer});
+
+export const getProfileDataTC = (user_id) =>{
+    return (dispatch) =>{
+        dispatch(ProfileIsLoadingAC(true))
+        if (user_id) {
+            ProfileAPI.getProfileData(user_id)
+                .then(response => {
+                    dispatch(setUserDataAC(response.data))
+                    dispatch(ProfileIsLoadingAC(false))
+                });
+        }
+    }
+};
 export default profilePageReducer;

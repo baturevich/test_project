@@ -1,8 +1,6 @@
 import React from 'react';
 import s from './Profile_Header.module.css';
-
 const Profile_Header = (props) => {
-  let imgUrl = props.user_data.imgUrl ? props.user_data.imgUrl : "https://baturevich.ru/images/cn/user2.jpg";
   return (
     <div className="row">
       <div className="col-sm-12">
@@ -18,11 +16,11 @@ const Profile_Header = (props) => {
               </ul>
             </div>
             <div className={`${s.profile__item} ${s.profile__item_img_block}`}>
-              <img src={imgUrl}
+              <img src={props.user_data.imgUrl ? props.user_data.imgUrl : "https://baturevich.ru/images/cn/user2.jpg" }
               alt="User_img" className={s.profile__img} />
             </div>
             <div className={`${s.profile__item} d-block`}>
-              <h1 className={s.profile__name}>{props.name}</h1>
+              <h1 className={s.profile__name}>{props.user_data.fullName ? props.user_data.fullName : props.user_data.name}</h1>
             </div>
             <div className={`${s.profile__item} ${s.short_data_content}`}>
               <div className={s.profile_data}>

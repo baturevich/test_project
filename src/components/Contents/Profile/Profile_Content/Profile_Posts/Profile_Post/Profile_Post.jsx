@@ -12,7 +12,7 @@ const Profile_Post = (props) => {
                         <p className={s.name}>{p.name}</p>
                         <p className={s.date}>{p.date}</p>
                     </div>
-                    <div className={s.action} onClick={ ()=> props.delete_post(p.id) }><i className="fa fa-angle-down"></i></div>
+                    <div className={s.action} onClick={ ()=> props.deletePostAC(p.id) }><i className="fa fa-angle-down"></i></div>
                 </div>
                 <div className={s.post_content}>
                     <p className={s.text_content}>{p.text}</p>

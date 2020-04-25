@@ -10,7 +10,7 @@ import Users from '../../Contents/Users/Users';
 const Content = (props) => {
   return (
     <div className={s.content_container}>
-      <Route path="/profile" render={() => <Profile store={props.store} />} />
+      <Route path="/profile/:user_id?" render={() => <Profile store={props.store} />} />
       <Route path="/chats" render={() => <Chats store={props.store} />} />
       <Route path='/users' render={()=> <Users />} />
     </div>

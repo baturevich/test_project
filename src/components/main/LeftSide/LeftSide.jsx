@@ -2,12 +2,12 @@ import React from 'react';
 import s from'./LeftSide.module.css';
 import { NavLink } from 'react-router-dom';
 
-const LeftSide = () => {
+const LeftSide = (props) => {
   return (
     <section className={s.left_side}>
       <ul className={s.menu}>
         <li className={s.menu__item}>
-          <NavLink to="/profile" className={s.menu__link}><i className="fa fa-user"></i></NavLink>
+          <NavLink to={`/profile/${props.user_id}`} className={s.menu__link}><i className="fa fa-user"></i></NavLink>
         </li>
         <li className={s.menu__item}>
           <NavLink to="/newsfeed" className={s.menu__link}><i className="fa fa-newspaper-o"></i></NavLink>

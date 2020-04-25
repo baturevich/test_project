@@ -4,20 +4,19 @@ import Profile_Post from './Profile_Post'
 import {deletePostAC} from '../../../../../../redux/profilePageReducer'
 
 
-
+ class Profile_Post_Container extends React.Component{
+     render(){
+         return(
+            <Profile_Post deletePostAC={this.props.deletePostAC} profile_page={this.props.profile_page} />
+         );
+     }
+ }
 let mapStateToProps = (state) =>{
     return{
-       profile_page: state.profile_page
+       profile_page: state.profile_page,
     }  
 }
 
-let mapDispatchToProps = (dispatch) =>{
-    return{
-        delete_post: (post_id)=>{
-            dispatch(deletePostAC(post_id));
-        }
-    }
-}
-const Profile_Post_Container = connect(mapStateToProps,mapDispatchToProps)(Profile_Post)
 
-export default Profile_Post_Container;
+
+export default  connect(mapStateToProps,{deletePostAC})(Profile_Post_Container);

@@ -1,12 +1,26 @@
 import React from 'react';
 import Profile_Header from './Profile_Header';
 import { connect } from 'react-redux';
+import { getProfileDataTC } from '../../../../redux/profilePageReducer';
+import { withRouter } from 'react-router-dom';
+import Preloader from '../../../common/Preloader/Preloader';
 
 class Profile_Header_Container extends React.Component {
+    componentDidMount() {
+        let user_id = this.props.match.params.user_id;
+        this.props.getProfileDataTC(user_id);
+    }
     render() {
         return (
-            <Profile_Header user_data={this.props.user_data} name={this.props.name} />
-        );
+            <>
+                {this.props.isLoading == true
+                    ? <Preloader />
+                    : <Profile_Header user_data={this.props.user_data}
+                        user_data_default={this.props.user_data_default} />
+                }
+            </>
+
+        )
     }
 }
 
@@ -14,19 +28,17 @@ class Profile_Header_Container extends React.Component {
 let mapStateToProps = (state) => {
     if (state.profile_page.user_data.fullName) {
         return {
-            name: state.profile_page.user_data.fullName,
             user_data: state.profile_page.user_data,
+            isLoading: state.profile_page.isLoading,
         }
-    } else{
-        return{
-            name: state.profile_page.user_data_default.name,
-            user_data: state.profile_page.user_data_default,
-        } 
+    } else {
+        return {
+            user_data: state.auth_data.user_data_default,
+            isLoading: state.profile_page.isLoading,
+        }
     }
-}
-let mapDispatchToProps = () => {
-    return {
+};
 
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Profile_Header_Container)
+let WithProfileHeaderContainer = withRouter(Profile_Header_Container);
+
+export default connect(mapStateToProps, { getProfileDataTC, })(WithProfileHeaderContainer);
