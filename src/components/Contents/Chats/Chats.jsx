@@ -13,8 +13,8 @@ const Chats = (props) => {
     return (
         <div className={s.chats}>
             <div className="row">
-                <Dialogs store={props.store} />
-                <Route path="/chats/sasha-kosulin" render={() => <Messages store={props.store} />} />
+                <Dialogs state={props.state}/>
+                <Route path="/chats/sasha-kosulin" render={() => <Messages state={props.state} />} />
                 <Route exact path="/chats">
                     <h1 className={s.preview}>Start messaging...</h1>
                 </Route>

@@ -6,12 +6,15 @@ import './css/reset.css';
 import './css/index.css';
 import store from './redux/store.js';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <SocNet store={store} />
+      <BrowserRouter>
+         <SocNet store={store} />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

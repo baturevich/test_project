@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getProfileDataTC } from '../../../../redux/profilePageReducer';
 import { withRouter } from 'react-router-dom';
 import Preloader from '../../../common/Preloader/Preloader';
+import { compose } from 'redux';
 
 class Profile_Header_Container extends React.Component {
     componentDidMount() {
@@ -39,6 +40,7 @@ let mapStateToProps = (state) => {
     }
 };
 
-let WithProfileHeaderContainer = withRouter(Profile_Header_Container);
 
-export default connect(mapStateToProps, { getProfileDataTC, })(WithProfileHeaderContainer);
+
+export default compose(
+    connect(mapStateToProps, { getProfileDataTC, }), withRouter,)(Profile_Header_Container);

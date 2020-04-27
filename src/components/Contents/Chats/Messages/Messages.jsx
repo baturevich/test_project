@@ -7,7 +7,7 @@ import Message_Container from './Message/Message_Container';
 
 const Messages = (props) => {
 
-    let state = props.store.getState().chats_page;
+    let state = props.state.chats_page;
     return (
         <div className="col-md-8">
             <div className={s.messages}>
@@ -17,9 +17,7 @@ const Messages = (props) => {
                 <div className={s.all_mes}>
                     <Message_Container />
                 </div>
-                <New_Message_Container
-                    store={props.store}
-                />
+                <New_Message_Container/>
             </div>
         </div>
     );

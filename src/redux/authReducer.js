@@ -35,6 +35,7 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuthUserDataAC = (auth_data) => ({type: 'SET_AUTH_USER_DATA', auth_data});
 export const isLoadingAC = (answer) => ({type: 'IS_LOADING', answer});
+export const isAuth = ()=> (initialState.isAuth)
 
 export const getAuthDataTC = () =>{
     return (dispatch)=>{

@@ -11,7 +11,6 @@ let initialState = {
 };
 
 const userPageReducer = (state = initialState, action) => {
-    debugger;
     switch (action.type) {
         case 'FOLLOW':{
             return{

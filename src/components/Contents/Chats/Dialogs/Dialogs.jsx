@@ -6,7 +6,7 @@ import Dialog from './Dialog/Dialog';
 
 
 const Dialogs = (props) => {
-    let state = props.store.getState().chats_page
+    let state = props.state.chats_page
     let dialogsElement =
         state.dialogs_data.map(d => <Dialog key={d.key} name={d.name} path={d.path} imgUrl={d.imgUrl} />);
     //

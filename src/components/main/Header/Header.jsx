@@ -3,7 +3,7 @@ import s from './Header.module.css';
 
 const Header = (props) => {
   return (
-    <header className={s.header}>
+    <header className="header">
       <div className={s.header__wrapper}>
         <a href="#s" className={s.header__logo}>Vision.com</a>
         <div className={`${s.input_wrapper}`}>
