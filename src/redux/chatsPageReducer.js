@@ -10,13 +10,13 @@ let initialState = {
     messages_data: [],
     mes_header_data: [{
         name: "Sasha kosulin",
-        imgUrl: "https://sun9-28.userapi.com/c837137/v837137989/357b6/_k2vjy5x_u0.jpg",
+        imgUrl: "https://baturevich.ru/images/cn/user4.jpg",
         date: "Last seen today at 3:40 AM"
     }],
     dialogs_data: [{
             id: 1,
             name: "Sasha Kosulin",
-            imgUrl: "https://sun9-28.userapi.com/c837137/v837137989/357b6/_k2vjy5x_u0.jpg",
+            imgUrl: "https://baturevich.ru/images/cn/user4.jpg",
             path: "/sasha-kosulin"
         },
         {
