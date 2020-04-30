@@ -9,7 +9,7 @@ const Login = (props) => {
                 <p>Special for you</p>
             </div>
             <div className={s.form_wrapper}>
-                <div className={s.form_login}>
+                <form className={s.form_login}>
                     <h2 className={s.login_title}>Login</h2>
                     <div className={s.inputs}>
                         <input type="text" placeholder='login' />
@@ -20,7 +20,7 @@ const Login = (props) => {
                         <button>Sign In</button>
                     </div>
                     <button className={s.forgout}>Forgout your passsword?</button>
-                </div>
+                </form>
             </div>
         </div>
     );
