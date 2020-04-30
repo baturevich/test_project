@@ -103,3 +103,12 @@
 .profile_data:last-child {
   margin-right: 0;
 }
+.status span{
+  cursor: pointer;
+}
+.status input{
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 5px 10px;
+  font-size: 12px;
+}

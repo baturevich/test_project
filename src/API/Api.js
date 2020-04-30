@@ -29,7 +29,14 @@ export const FollowAPI = {
 export const ProfileAPI ={
     getProfileData(user_id){
         return instance.get(`profile/${+user_id}`)
-    }
+    },
+    getStatusData(user_id){
+        
+        return instance.get(`profile/status/${+ user_id}`)
+    },
+    upStatusData(status){
+        return instance.put(`profile/status`,{status})
+    },
 };
 
 export const AuthAPI = {

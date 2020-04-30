@@ -1,6 +1,5 @@
 import { ProfileAPI } from "../API/Api";
 
-
 let now = new Date(),
     day = now.getDate(),
     month = now.getMonth(),
@@ -30,6 +29,7 @@ let initialState =   {
     user_data: {
 
     },
+    status_data: "",
     new_post_data:{
         id: 1,
         new_post_text: "i can do it",
@@ -49,6 +49,9 @@ let initialState =   {
 };
 const profilePageReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'IS_LOADING':{
+            return{...state, isLoading: action.answer}
+        }
         case 'UP_NEW_POST_TEXT':{
             let state_copy = {...state};
             state_copy.new_post_data = {...state.new_post_data};
@@ -92,8 +95,11 @@ const profilePageReducer = (state = initialState, action) => {
                 user_data: action.user_data
             }
         }
-        case 'IS_LOADING':{
-            return{...state, isLoading: action.answer}
+        case 'SET_STATUS_DATA':{
+            return {
+                ...state,
+                status_data: action.status_data
+            }
         }
         default:
             return state;
@@ -103,12 +109,12 @@ const profilePageReducer = (state = initialState, action) => {
 };
 
 
-
+export const ProfileIsLoadingAC = (answer) => ({type: 'IS_LOADING', answer});
 export const upNewPostTextAC = (post_text) => ({type: 'UP_NEW_POST_TEXT', post_text});
 export const addPostAC = () => ({type: 'ADD_POST'});
 export const deletePostAC = (post_id) => ({type: 'DELETE_POST', post_id});
 export const setUserDataAC = (user_data) => ({type: 'SET_USER_DATA', user_data});
-export const ProfileIsLoadingAC = (answer) => ({type: 'IS_LOADING', answer});
+export const setStatusData = (status_data) => ({type: 'SET_STATUS_DATA', status_data});
 
 export const getProfileDataTC = (user_id) =>{
     return (dispatch) =>{
@@ -120,6 +126,26 @@ export const getProfileDataTC = (user_id) =>{
                     dispatch(ProfileIsLoadingAC(false))
                 });
         }
+    }
+};
+
+export const getStatusDataTC = (user_id)=>{
+    
+    return (dispatch) =>{
+        ProfileAPI.getStatusData(user_id)
+        .then(response =>{
+            dispatch(setStatusData(response.data))
+        })
+    }
+};
+export const upStatusDataTC = (new_status_data)=>{
+    return (dispatch) =>{
+        ProfileAPI.upStatusData(new_status_data)
+        .then(response =>{
+            if(response.data.resultCode == 0){
+                dispatch(setStatusData(new_status_data))
+            }      
+        })
     }
 };
 export default profilePageReducer;

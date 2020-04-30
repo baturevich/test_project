@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Profile_Header.module.css';
+import Profile_Status from './Profile_Status'
 const Profile_Header = (props) => {
   return (
     <div className="row">
@@ -8,12 +9,7 @@ const Profile_Header = (props) => {
           <div className={`${s.profile__cover}`} ></div>
           <div className={s.profile__preview}>
             <div className={s.profile__item}>
-              <ul className={s.soc_net_on_profile}>
-                <li className={s.soc_net_on_profile__item}><a href="##"><i className="fa fa-vk"></i></a></li>
-                <li className={s.soc_net_on_profile__item}><a href="##"><i className="fa fa-facebook"></i></a></li>
-                <li className={s.soc_net_on_profile__item}><a href="##"><i className="fa fa-instagram"></i></a></li>
-                <li className={s.soc_net_on_profile__item}><a href="##"><i className="fa fa-paper-plane-o"></i></a></li>
-              </ul>
+              <Profile_Status status_data={props.status_data} upStatusDataTC={props.upStatusDataTC}/>
             </div>
             <div className={`${s.profile__item} ${s.profile__item_img_block}`}>
               <img src={props.user_data.imgUrl ? props.user_data.imgUrl : "https://baturevich.ru/images/cn/user2.jpg" }

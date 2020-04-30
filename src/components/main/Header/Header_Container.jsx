@@ -14,7 +14,8 @@ const mapDispatchToProps = (state)=>{
    if(state.auth_data.data.login){
     return{
         name: state.auth_data.data.login,
-        imgUrl: 'https://baturevich.ru/images/cn/user2.jpg'
+        imgUrl: 'https://baturevich.ru/images/cn/user2.jpg',
+        user_id: state.auth_data.data.id,
     }
        
    } else{

@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Header.module.css';
+import { NavLink } from 'react-router-dom';
 
 const Header = (props) => {
   return (
@@ -12,7 +13,7 @@ const Header = (props) => {
         </div>
         <div className={s.user_ungle}>
           <a href="" className={s.user_notification}><i className="fa fa-bell-o"></i></a>
-          <a href="#s" className={s.profile_name}>{props.name}</a>
+          <NavLink to={`profile/${props.user_id}`} className={s.profile_name}>{props.name}</NavLink>
           <img src={props.imgUrl} alt="profile-picture" className={s.profile_img} />
         </div>
       </div>

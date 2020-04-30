@@ -19,3 +19,16 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+for(let i = 0; i<=100; i++){
+  let num = i % 3;
+  if(num === 0 & i!= 0){
+    console.log('fizz')
+  } else{
+    console.log(i)
+  }
+};
+
+
+
+
