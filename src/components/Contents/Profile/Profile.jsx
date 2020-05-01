@@ -13,6 +13,11 @@ class Profile extends React.Component{
         this.props.getStatusDataTC(user_id);
         this.props.getProfileDataTC(user_id);
     }
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.match.params.user_id != this.props.match.params.user_id){
+            this.props.getProfileDataTC(this.props.match.params.user_id);
+        } 
+    }
     render(){
         return (
             <div className={s.profile}>

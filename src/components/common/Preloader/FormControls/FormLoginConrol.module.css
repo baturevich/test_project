@@ -1,0 +1,8 @@
+.formControl.error input {
+ border-bottom: 1px solid #e90028 !important;
+}
+.formControl.error span{
+    display: block;
+    color: #e90028;
+    font-size: 12px;
+}

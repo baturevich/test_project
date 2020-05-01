@@ -53,8 +53,14 @@ export const getAuthDataTC = () =>{
     }
 }
 export const loginTC = (login_data)=>{
-    AuthAPI.authorize(login_data);
-    initialState.isAuth = true;
+    return(dispatch)=>{
+        dispatch(isLoadingAC(true))
+        AuthAPI.authorize(login_data)
+            .then(response=>{
+                dispatch(setAuthData(true))
+                dispatch(isLoadingAC(false))
+        })
+    }  
 }
 
 export const deLoginTC = ()=>{

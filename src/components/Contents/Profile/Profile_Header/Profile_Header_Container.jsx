@@ -3,9 +3,10 @@ import Profile_Header from './Profile_Header';
 import { connect } from 'react-redux';
 import { getProfileDataTC, getStatusDataTC, upStatusDataTC } from '../../../../redux/profilePageReducer';
 import Preloader from '../../../common/Preloader/Preloader';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 
 class Profile_Header_Container extends React.Component {
-
     render() {
         return (
             <>
@@ -40,6 +41,7 @@ let mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, {
-    getProfileDataTC, getStatusDataTC, upStatusDataTC,
-})(Profile_Header_Container);
+export default  compose(
+    connect(mapStateToProps, {getProfileDataTC, getStatusDataTC, upStatusDataTC,}),
+    withRouter,
+)(Profile_Header_Container) 

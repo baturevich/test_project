@@ -1,15 +1,9 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import Dialog from './Dialog/Dialog';
-
-
+import Dialog_Container from './Dialog/Dialog_Container';
 
 
 const Dialogs = (props) => {
-    let state = props.state.chats_page
-    let dialogsElement =
-        state.dialogs_data.map(d => <Dialog key={d.key} name={d.name} path={d.path} imgUrl={d.imgUrl} />);
-    //
     return (
         <div className="col-md-4">
             <div className={s.dialogs}>
@@ -21,7 +15,7 @@ const Dialogs = (props) => {
                     </div>
                 </div>
                 <div className={s.dialog_wrapper}>
-                    {dialogsElement}
+                    <Dialog_Container/>
                 </div>
             </div>
         </div>

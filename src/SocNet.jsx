@@ -12,6 +12,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 class SocNet extends React.Component {
   componentDidMount() {
+    debugger;
     this.props.getAuthDataTC()
   }
   render() {
@@ -22,21 +23,22 @@ class SocNet extends React.Component {
           <Route path='' render={() => <Login />} />
         </>
       )
-    } 
-      return (
-        <div className="CN_wrapper">
-          <Header_Container />
-          <Content state={this.props.state} />
-          <Left_Side_Container />
-          {/* <RigthSide /> */}
-        </div>
-      );
-    
+    }
+    return (
+      <div className="CN_wrapper">
+        <Header_Container />
+        <Content state={this.props.state} />
+        <Left_Side_Container />
+        {/* <RigthSide /> */}
+      </div>
+    );
+
   };
 }
 const mapStateToProps = (state) => {
   return {
-    state: state
+    state: state,
+    isLoading: state.auth_data.isLoading,
   }
 };
 

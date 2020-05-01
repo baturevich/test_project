@@ -28,7 +28,6 @@ class Profile_Status extends React.Component{
                 status: this.props.status_data,
             })
         }
-        console.log('UPDATE')
     }
     render(){
         return(

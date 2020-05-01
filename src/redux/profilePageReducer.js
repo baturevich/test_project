@@ -52,7 +52,7 @@ const profilePageReducer = (state = initialState, action) => {
         }
         case 'ADD_POST':{
             let post_text = action.post_text;
-            let imgUrl = state.user_data.imgUrl ? state.user_data.imgUrl : state.user_data_default.imgUrl;
+            let imgUrl = state.user_data.imgUrl ? state.user_data.imgUrl : state.user_data_default.photos.small ;
             let post_id  = state.posts_data.length;
             let newPost = {
                 id: post_id,
