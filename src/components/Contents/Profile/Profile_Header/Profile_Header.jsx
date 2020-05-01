@@ -2,6 +2,8 @@ import React from 'react';
 import s from './Profile_Header.module.css';
 import Profile_Status from './Profile_Status'
 const Profile_Header = (props) => {
+  debugger;
+  let imgUrl = props.user_data.photos.small || "https://baturevich.ru/images/cn/user2.jpg";
   return (
     <div className="row">
       <div className="col-sm-12">
@@ -12,7 +14,7 @@ const Profile_Header = (props) => {
               <Profile_Status status_data={props.status_data} upStatusDataTC={props.upStatusDataTC}/>
             </div>
             <div className={`${s.profile__item} ${s.profile__item_img_block}`}>
-              <img src={props.user_data.imgUrl ? props.user_data.imgUrl : "https://baturevich.ru/images/cn/user2.jpg" }
+              <img src={imgUrl }
               alt="User_img" className={s.profile__img} />
             </div>
             <div className={`${s.profile__item} d-block`}>

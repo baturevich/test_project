@@ -1,46 +1,38 @@
 import React from 'react';
 import s from './Profile_New_Post.module.css';
+import { reduxForm, Field } from 'redux-form';
 
 
 const Profile_New_Post = (props) => {
     
-    let textarea = React.createRef();
-    let addPost = () => {
-        props.add_post()
-    };
-    let addPostOnEnter = (event) => {
-        event = event || window.event;
-        if (event.keyCode == 13) {
-            props.add_post()
-        } 
-    };
-    const upNewPostText = () => {
-        let post_text = textarea.current.value;
-        props.up_new_post_text(post_text)
-
-    };
-   
-
+    const onAddPost = (values)=>{
+        props.addPostAC(values.newPostText)
+    }
+    
     return (
         <div className={s.content}>
             <div className={s.preview}>
                 <h1 className={s.title}>Create Post</h1>
             </div>
-            <div className={s.post}>
-                <div className={s.wrapper}>
-                    <img src={props.imgUrl} alt="User-img" className={s.user_img} />
-                    <textarea name="New post"
-                        className={s.post_text}
-                        onChange={upNewPostText}
-                        value={props.new_post_text}
-                        ref={textarea}
-                        onKeyDown={addPostOnEnter} />
-                </div>
-                <div className={s.btn_group}>
-                    <a href="#s" className={s.btn} onClick={addPost} >Post</a>
-                </div>
-            </div>
+            <NewProfilePostFormRedux {...props} onSubmit={onAddPost}/>
         </div>
     );
 };
+
+
+const NewProfilePostForm = (props)=>{
+    return(
+        <form className={s.post} onSubmit={props.handleSubmit}>
+                <div className={s.wrapper}>
+                    <img src={props.imgUrl} alt="User-img" className={s.user_img} />
+                    <Field name="newPostText" component={'textarea'} className={s.post_text} />
+                </div>
+                <div className={s.btn_group}>
+                    <button className={s.btn}>Post</button>
+                </div>
+            </form>
+    );
+}
+
+ const NewProfilePostFormRedux = reduxForm({form:'newProfilePostForm'})(NewProfilePostForm);
 export default Profile_New_Post;

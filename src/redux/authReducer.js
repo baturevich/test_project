@@ -27,6 +27,9 @@ const authReducer = (state = initialState, action) => {
         case 'IS_LOADING':{
             return{...state, isLoading: action.answer}
         }
+        case 'SET_AUTH_DATA':{
+            return{...state, isAuth: action.answer}
+        }
          default :{
             return state
         }
@@ -35,7 +38,8 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuthUserDataAC = (auth_data) => ({type: 'SET_AUTH_USER_DATA', auth_data});
 export const isLoadingAC = (answer) => ({type: 'IS_LOADING', answer});
-export const isAuth = ()=> (initialState.isAuth)
+export const isAuth = ()=> (initialState.isAuth);
+export const setAuthData = (answer)=>({type:'SET_AUTH_DATA', answer});
 
 export const getAuthDataTC = () =>{
     return (dispatch)=>{
@@ -47,5 +51,18 @@ export const getAuthDataTC = () =>{
               } 
           })
     }
-  }
+}
+export const loginTC = (login_data)=>{
+    AuthAPI.authorize(login_data);
+    initialState.isAuth = true;
+}
+
+export const deLoginTC = ()=>{
+    return(dispatch)=>{
+        AuthAPI.deAuthorize()
+            .then(response=>{
+                dispatch(setAuthData(false))
+        })
+    }
+}
 export default authReducer;

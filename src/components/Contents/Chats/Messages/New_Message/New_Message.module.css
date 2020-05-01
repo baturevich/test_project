@@ -28,6 +28,8 @@
 
 }
 .send{
+    background: transparent;
+    border:none;
     margin-left: 20px;
 }
 .send i{

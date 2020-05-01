@@ -15,14 +15,14 @@ class SocNet extends React.Component {
     this.props.getAuthDataTC()
   }
   render() {
-    // if (!this.props.state.auth_data.isAuth) {
-    //   return (
-    //     <>
-    //       <Redirect to='' />
-    //       <Route path='' render={() => <Login />} />
-    //     </>
-    //   )
-    // } 
+    if (!this.props.state.auth_data.isAuth) {
+      return (
+        <>
+          <Redirect to='' />
+          <Route path='' render={() => <Login />} />
+        </>
+      )
+    } 
       return (
         <div className="CN_wrapper">
           <Header_Container />

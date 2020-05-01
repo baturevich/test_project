@@ -22,22 +22,20 @@ switch (month) {
     case 9: fmonth = "Oct"; break;
     case 10: fmonth = "Nov"; break;
     case 11: fmonth = "Dec"; break;
+    default: ;
 };
 let currentData = day + " " + fmonth + " at " + hour + ":" + minutes;
 
 let initialState =   {
-    user_data: {
-
-    },
+    user_data: {},
     status_data: "",
-    new_post_data:{
-        id: 1,
-        new_post_text: "i can do it",
-    },
     posts_data:[],
     user_data_default: {
         id: 1,
-        imgUrl: "https://baturevich.ru/images/cn/user2.jpg",
+        photos:{ 
+        small:"https://baturevich.ru/images/cn/user2.jpg",
+        large:"https://baturevich.ru/images/cn/user2.jpg",
+        },
         name: "No name",
         posts_count: 1,
         friends_count: 2,
@@ -52,17 +50,12 @@ const profilePageReducer = (state = initialState, action) => {
         case 'IS_LOADING':{
             return{...state, isLoading: action.answer}
         }
-        case 'UP_NEW_POST_TEXT':{
-            let state_copy = {...state};
-            state_copy.new_post_data = {...state.new_post_data};
-            state_copy.new_post_data.new_post_text = action.post_text;
-            return state_copy;
-        }
         case 'ADD_POST':{
-            let post_text = state.new_post_data.new_post_text;
-            let imgUrl = state.user_data.imgUrl ? state.user_data.imgUrl : state.user_data_default.imgUrl
+            let post_text = action.post_text;
+            let imgUrl = state.user_data.imgUrl ? state.user_data.imgUrl : state.user_data_default.imgUrl;
+            let post_id  = state.posts_data.length;
             let newPost = {
-                id: 3,
+                id: post_id,
                 name: state.user_data.name ? state.user_data.name : state.user_data_default.name ,
                 date: currentData,
                 text: post_text,
@@ -70,7 +63,7 @@ const profilePageReducer = (state = initialState, action) => {
                 likeCounts: 0,
                 commentCounts: 0
             };        
-            if(post_text != ''){
+            if(post_text !== ''){
                 let state_copy = {...state};
                 state_copy.posts_data = [...state.posts_data];
                 state_copy.new_post_data = {...state.new_post_data};
@@ -83,7 +76,7 @@ const profilePageReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts_data: state.posts_data.filter( p =>{
-                    if(p.id != action.post_id){
+                    if(p.id !== action.post_id){
                         return p
                     }
                 })
@@ -104,14 +97,11 @@ const profilePageReducer = (state = initialState, action) => {
         default:
             return state;
     };
-    
-
 };
 
 
 export const ProfileIsLoadingAC = (answer) => ({type: 'IS_LOADING', answer});
-export const upNewPostTextAC = (post_text) => ({type: 'UP_NEW_POST_TEXT', post_text});
-export const addPostAC = () => ({type: 'ADD_POST'});
+export const addPostAC = (post_text) => ({type: 'ADD_POST', post_text});
 export const deletePostAC = (post_id) => ({type: 'DELETE_POST', post_id});
 export const setUserDataAC = (user_data) => ({type: 'SET_USER_DATA', user_data});
 export const setStatusData = (status_data) => ({type: 'SET_STATUS_DATA', status_data});
@@ -122,6 +112,7 @@ export const getProfileDataTC = (user_id) =>{
         if (user_id) {
             ProfileAPI.getProfileData(user_id)
                 .then(response => {
+                    debugger;
                     dispatch(setUserDataAC(response.data))
                     dispatch(ProfileIsLoadingAC(false))
                 });
@@ -138,6 +129,7 @@ export const getStatusDataTC = (user_id)=>{
         })
     }
 };
+
 export const upStatusDataTC = (new_status_data)=>{
     return (dispatch) =>{
         ProfileAPI.upStatusData(new_status_data)

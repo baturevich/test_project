@@ -1,39 +1,25 @@
 import React from 'react';
 import s from './New_Message.module.css'
-
+import { Field, reduxForm } from 'redux-form';
 
 const New_Message = (props) => {
-    let newMessEl = React.createRef();
-    let current_text = props.new_message_text;
-    
-    const upNewMessText = () => {
-        let mess_text = newMessEl.current.value;
-        props.up_new_mess_text(mess_text);
+    const onAddMess = (values)=>{
+        props.addMessAC(values.newMessText)
     }
-    const addMess = () => {
-        props.add_mess()
-    }
-    const downEnter = (event) => {
-        event = event || window.event
-        if (event.keyCode == 13) {
-            props.add_mess()
-        } return
-    }
-
     return (
-        <div className={s.wrapper}>
+        <New_MessageFormRedux onSubmit={onAddMess}/>
+    );
+}
+const New_MessageForm = (props) => {
+    return (
+        <form className={s.wrapper} onSubmit={props.handleSubmit}>
             <i className="fa fa-smile-o"></i>
             <i className="fa fa-paperclip"></i>
-            <textarea type="text"
-                ref={newMessEl}
-                onChange={() => upNewMessText()}
-                value={current_text}
-                className={s.message}
-                onKeyDown={() => downEnter()}
-            />
-            <a href="#s" onClick={() => addMess()} className={s.send}><i className="fa fa-paper-plane-o"></i></a>
-        </div>
+            <Field name={"newMessText"} component={"textarea"} className={s.message} />
+            <button className={s.send}><i className="fa fa-paper-plane-o"></i></button>
+        </form>
     );
 };
+ const New_MessageFormRedux = reduxForm({ form: 'New_MessageForm' })(New_MessageForm);
 
 export default New_Message;

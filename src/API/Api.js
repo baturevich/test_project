@@ -31,7 +31,6 @@ export const ProfileAPI ={
         return instance.get(`profile/${+user_id}`)
     },
     getStatusData(user_id){
-        
         return instance.get(`profile/status/${+ user_id}`)
     },
     upStatusData(status){
@@ -42,5 +41,11 @@ export const ProfileAPI ={
 export const AuthAPI = {
     getAuthData(){
         return instance.get('auth/me')
+    },
+    authorize(login_data){
+        return instance.post(`auth/login`, login_data)
+    },
+    deAuthorize(){
+        return instance.delete(`auth/login`,)
     }
 };

@@ -25,7 +25,7 @@ const User_Item = (props) => {
             props.users.map(u => {
                 return <div className="row">
                     <div className="col-md-12">
-                        <div className={s.user}>
+                        <div className={s.user} key={u.id}>
                             <NavLink to={`/profile/${u.id}`} >
                                 <img src={u.photos.small
                                     ? u.photos.small
@@ -38,9 +38,9 @@ const User_Item = (props) => {
 
                             {u.followed
                                 ? <button disabled={props.followInProgress.some(id => id === u.id)}
-                                    onClick={() => props.unFollowedUser(u.id)}>Unfollowed</button>
+                                    onClick={() => props.unFollowedUser(u.id)}>Unfollow</button>
                                 : <button disabled={props.followInProgress.some(id => id === u.id)}
-                                    onClick={() => props.followedUser(u.id)}>Followed</button>
+                                    onClick={() => props.followedUser(u.id)}>Follow</button>
                             }
                         </div>
                     </div>
