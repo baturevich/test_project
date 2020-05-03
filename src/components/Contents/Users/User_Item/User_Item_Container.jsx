@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Axios from 'axios';
-import {getUsersTC, followTC, unFollowTC } from '../../../../redux/usersPageReducer';
+import { getUsersTC, followTC, unFollowTC } from '../../../../redux/usersPageReducer';
 import User_Item from './User_Item';
 import Preloader from '../../../common/Preloader/Preloader';
 
@@ -18,15 +17,25 @@ class User_Item_Container extends React.Component {
         this.props.followTC(user_id)
     };
     unFollowedUser = (user_id) => {
-       this.props.unFollowTC(user_id)
+        this.props.unFollowTC(user_id)
     }
-    render() {
 
+
+    render() {
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+        let pages = [];
+
+        for (let i = 0; i <= pagesCount; i++) {
+            if (i > 0) {
+                pages.push(i)
+            }
+        }
         return <>
             {this.props.isLoading ? <Preloader /> : <User_Item {...this.props}
-            followedUser={this.followedUser}
-            unFollowedUser={this.unFollowedUser}
-            onChangePage={this.onChangePage}
+                followedUser={this.followedUser}
+                unFollowedUser={this.unFollowedUser}
+                onChangePage={this.onChangePage}
+                pages={pages}
             />}
         </>
     }
@@ -43,4 +52,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, {getUsersTC, followTC, unFollowTC,})(User_Item_Container);
+export default connect(mapStateToProps, { getUsersTC, followTC, unFollowTC, })(User_Item_Container);

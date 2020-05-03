@@ -112,7 +112,6 @@ export const getProfileDataTC = (user_id) =>{
         if (user_id) {
             ProfileAPI.getProfileData(user_id)
                 .then(response => {
-                    debugger;
                     dispatch(setUserDataAC(response.data))
                     dispatch(ProfileIsLoadingAC(false))
                 });

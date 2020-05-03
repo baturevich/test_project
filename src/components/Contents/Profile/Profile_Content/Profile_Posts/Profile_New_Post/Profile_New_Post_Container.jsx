@@ -2,8 +2,18 @@ import React from 'react';
 import { addPostAC } from '../../../../../../redux/profilePageReducer';
 import Profile_New_Post from './Profile_New_Post';
 import { connect } from 'react-redux';
+import { reset } from 'redux-form';
 
 
+class Profile_New_Post_Container extends React.Component{
+    onAddPost = (values)=>{
+        this.props.addPostAC(values.newPostText);
+        this.props.reset('newProfilePostForm');
+    };
+    render(){
+        return <Profile_New_Post onAddPost={this.onAddPost} imgUrl={this.props.imgUrl}/>
+    };
+};
 let mapStateToProps = (state) => {
     return {
         imgUrl: state.profile_page.user_data.imgUrl 
@@ -13,8 +23,5 @@ let mapStateToProps = (state) => {
     }
 };
 
-const Profile_New_Post_Container =  connect(mapStateToProps,{addPostAC})(Profile_New_Post);
 
-
-
-export default Profile_New_Post_Container;
+export default connect(mapStateToProps,{addPostAC,reset})(Profile_New_Post_Container);

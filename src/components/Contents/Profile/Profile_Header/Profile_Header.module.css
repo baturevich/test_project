@@ -1,7 +1,7 @@
 .pofile__header {
   position: relative;
   margin-bottom: 20px;
-  box-shadow: 0 2px 6px 0 rgba(0,0,0,0.12), inset 0 -1px 0 0 #dadce0;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), inset 0 -1px 0 0 #dadce0;
 }
 
 .profile__cover {
@@ -16,7 +16,7 @@
 }
 
 .profile__preview {
-  padding: 50px 30px;
+  padding: 50px 30px 20px 30px;
   position: relative;
   display: flex;
   background-color: #fff;
@@ -103,12 +103,63 @@
 .profile_data:last-child {
   margin-right: 0;
 }
-.status span{
+.status{
+  padding: 3px 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.status:hover{
+  background: #f5f5f5;
+}
+.status span {
+  font-size: 16px;
   cursor: pointer;
 }
-.status input{
+
+.status input {
   border: none;
   border-bottom: 1px solid #ccc;
   padding: 5px 10px;
   font-size: 12px;
+}
+
+.assets {
+  background: #fff;
+  padding: 0 30px 30px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.button_group {
+  display: flex;
+}
+
+.button_group button {
+  font-size: 14px;
+  background: #4285f4;
+  padding: 10px 0;
+  border-radius: 5px;
+  color: #fff !important;
+  border: 2px solid transparent;
+  transition: all .2s ease;
+  width: 120px;
+}
+
+.button_group button:first-child {
+  margin-right: 20px;
+}
+.show_more{
+  margin-left: auto;
+  background: transparent;
+  border: none;
+}
+.show_more:focus, 
+.show_more:active{
+  outline: none;
+  background: transparent;
+  border: none;
+}
+.show_more i{
+  margin-left: 10px;
 }

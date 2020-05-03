@@ -4,17 +4,12 @@ import { reduxForm, Field } from 'redux-form';
 
 
 const Profile_New_Post = (props) => {
-    
-    const onAddPost = (values)=>{
-        props.addPostAC(values.newPostText)
-    }
-    
     return (
         <div className={s.content}>
             <div className={s.preview}>
                 <h1 className={s.title}>Create Post</h1>
             </div>
-            <NewProfilePostFormRedux {...props} onSubmit={onAddPost}/>
+            <NewProfilePostFormRedux {...props} onSubmit={props.onAddPost}/>
         </div>
     );
 };

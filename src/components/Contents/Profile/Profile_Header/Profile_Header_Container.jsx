@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 
 class Profile_Header_Container extends React.Component {
+
     render() {
         return (
             <>
@@ -16,6 +17,7 @@ class Profile_Header_Container extends React.Component {
                         user_data_default={this.props.user_data_default}
                         status_data={this.props.status_data}
                         upStatusDataTC={this.props.upStatusDataTC}
+
                     />
                 }
             </>

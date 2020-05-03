@@ -3,19 +3,10 @@ import s from './User_Item.module.css';
 import { NavLink } from 'react-router-dom';
 
 const User_Item = (props) => {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-
-    for (let i = 0; i <= pagesCount; i++) {
-        if (i > 0) {
-            pages.push(i)
-        }
-    }
-
     return (<div>
         <ul className={s.pagination}>
             {
-                pages.map(p => {
+                props.pages.map(p => {
                     return <li className={props.currentPage === p && s.selected}
                         onClick={() => { props.onChangePage(p) }}>{p}</li>
                 })
