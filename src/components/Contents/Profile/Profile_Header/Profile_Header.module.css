@@ -110,7 +110,7 @@
   justify-content: flex-end;
 }
 .status:hover{
-  background: #f5f5f5;
+  background: #fafafb;
 }
 .status span {
   font-size: 16px;
@@ -118,6 +118,7 @@
 }
 
 .status input {
+  background: transparent;
   border: none;
   border-bottom: 1px solid #ccc;
   padding: 5px 10px;
@@ -135,7 +136,10 @@
   display: flex;
 }
 
-.button_group button {
+.button_group button,
+.button_group a  {
+  cursor: pointer;
+  text-align: center;
   font-size: 14px;
   background: #4285f4;
   padding: 10px 0;

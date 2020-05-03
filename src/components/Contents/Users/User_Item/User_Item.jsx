@@ -23,7 +23,7 @@ const User_Item = (props) => {
                                     : 'https://baturevich.ru/images/cn/user2.jpg'} alt="user-img" />
                             </NavLink>
                             <div className={s.name_and_city}>
-                                <p className={s.name} >{u.name}</p>
+                            <NavLink to={`/profile/${u.id}`} ><p className={s.name} >{u.name}</p></NavLink>
                                 <p className={s.city}>{u.city ? u.city : 'Chelyabinsk'}</p>
                             </div>
 

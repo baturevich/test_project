@@ -1,4 +1,5 @@
 import { AuthAPI } from "../API/Api";
+import { stopSubmit } from "redux-form";
 let initialState = {
     data :{},
     isLoading: false,
@@ -43,7 +44,7 @@ export const setAuthData = (answer)=>({type:'SET_AUTH_DATA', answer});
 
 export const getAuthDataTC = () =>{
     return (dispatch)=>{
-      AuthAPI.getAuthData()
+     return AuthAPI.getAuthData()
           .then(response=>{
               let isLogin = response.data.resultCode;
               if(isLogin == 0){
@@ -57,8 +58,12 @@ export const loginTC = (login_data)=>{
         dispatch(isLoadingAC(true))
         AuthAPI.authorize(login_data)
             .then(response=>{
-                dispatch(setAuthData(true))
-                dispatch(isLoadingAC(false))
+                if(response.data.resultCode == 0){
+                    dispatch(setAuthData(true))
+                    dispatch(isLoadingAC(false))
+                } else{
+                    dispatch(stopSubmit("login", {_error: response.data.messages[0]}))
+                }        
         })
     }  
 }
@@ -67,7 +72,9 @@ export const deLoginTC = ()=>{
     return(dispatch)=>{
         AuthAPI.deAuthorize()
             .then(response=>{
-                dispatch(setAuthData(false))
+                if(response.data.resultCode == 0 ){
+                    dispatch(setAuthData(false))
+                }             
         })
     }
 }

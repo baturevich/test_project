@@ -1,11 +1,8 @@
 import React from 'react';
 import Header from './Header.jsx';
 import { connect } from 'react-redux';
-import { getAuthDataTC, deLoginTC } from '../../../redux/authReducer.js';
+import { deLoginTC } from '../../../redux/authReducer.js';
 class Header_Container extends React.Component{
-    componentDidMount(){
-        this.props.getAuthDataTC()
-    }
     render(){
         return <Header {...this.props}/>
     }
@@ -27,4 +24,4 @@ const mapDispatchToProps = (state)=>{
    }
 }
 
-export default connect(mapDispatchToProps,{getAuthDataTC,deLoginTC })(Header_Container)
+export default connect(mapDispatchToProps,{deLoginTC })(Header_Container)

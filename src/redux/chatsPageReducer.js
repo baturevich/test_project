@@ -25,7 +25,7 @@ const chatsPageReducer = (state = initialState, action) => {
                 name: "Kirill Baturevich",
                 text: mess_text,
                 date: currentData,
-                imgUrl: "https://baturevich.ru/images/cn/user_img.jpg",
+                imgUrl: "https://baturevich.ru/images/cn/user2.jpg",
             };
             if (mess_text != "") {             
                 let state_copy = {...state};

@@ -1,0 +1,11 @@
+.wrapper{
+    padding-top: 20%;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background: #fafafb;
+}
+.wrapper h1{
+   font-size: 74px;
+   color:#000;
+}

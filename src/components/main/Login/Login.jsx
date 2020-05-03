@@ -3,7 +3,7 @@ import s from './Login.module.css'
 import { reduxForm, Field } from 'redux-form';
 import { loginTC } from '../../../redux/authReducer';
 import { requiared, maxLength } from '../../../utils/validators';
-import InputLoginControl from '../../common/Preloader/FormControls/FormLoginControl';
+import InputLoginControl from '../../common/FormControls/FormLoginControl';
 import { connect } from 'react-redux';
 
 class Login extends React.Component {
@@ -30,15 +30,19 @@ const LoginForm = (props) => {
         <div className={s.form_wrapper}>
             <form className={s.form_login} onSubmit={props.handleSubmit}>
                 <h2 className={s.login_title}>Login</h2>
+                
                 <div className={s.inputs}>
-                    <Field placeholder='login' name={'email'}
+                    <Field placeholder='login' name={'email'} type="email"
                         component={InputLoginControl} validate={[requiared, maxLength50 ]} />
-                    <Field placeholder='Password' name={'password'}
+                    <Field placeholder='Password' name={'password'} type="password"
                         component={InputLoginControl} validate={[requiared, maxLength50]} />
                 </div>
                 <div className={s.check}>
                     <Field type={'checkbox'} name={'rememberMe'} component={'input'} />
                 Remember Me
+                </div>
+                <div className={props.error && s.some_error}>
+                    <span>{props.error}</span>
                 </div>
                 <div className={s.buttons}>
                     <button>Log In</button>
