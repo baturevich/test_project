@@ -1,4 +1,10 @@
 import { ProfileAPI } from "../API/Api";
+export const getProfileUserData = (state) => {
+    return state.profile_page.user_data;
+}
+export const getProfileIsLoading = (state)=>{
+    return state.profile_page.isLoading
+}
 
 let now = new Date(),
     day = now.getDate(),

@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom';
 
 const Dialog = (props) => {
    return props.dialogs_data.map(d => {
-        return <NavLink to={"/chats" + "/" + d.id}>
-            <div className={s.dialog}>
+        return <NavLink to={"/chats" + "/" + d.id} key={Math.random()*3}>
+            <div className={s.dialog} >
                 <img src={d.photos.small ? d.photos.small : "https://baturevich.ru/images/cn/user2.jpg"} 
                 alt="User-img" className={`${s.user_img} ${s.online}`} />
                 <div className={s.name_and_mess}>

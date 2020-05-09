@@ -3,7 +3,6 @@ import s from './Mes_Header.module.css';
 import { NavLink } from 'react-router-dom';
 
 const Mes_Header = (props) => {
-    debugger;
     return (
         <div className={s.header}>
             <NavLink className={s.profile} to={`/profile/${+ props.user_id}`}>

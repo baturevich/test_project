@@ -8,12 +8,9 @@ class New_Message_Container extends React.Component {
     onAddMess = (values) => {
         this.props.addMessAC(values.newMessText);
         this.props.reset('New_MessageForm');
-
     }
     render() {
         return <New_MessageFormRedux onSubmit={this.onAddMess} />
-
-        
     };
 };
 

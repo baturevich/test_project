@@ -1,7 +1,10 @@
 import React from 'react';
 import Profile_Header from './Profile_Header';
 import { connect } from 'react-redux';
-import { getProfileDataTC, getStatusDataTC, upStatusDataTC } from '../../../../redux/profilePageReducer';
+import {
+    getProfileDataTC, getStatusDataTC,
+    upStatusDataTC, getProfileUserData, getProfileIsLoading
+} from '../../../../redux/profilePageReducer';
 import Preloader from '../../../common/Preloader/Preloader';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
@@ -20,7 +23,6 @@ class Profile_Header_Container extends React.Component {
 
                     />
                 }
-               
             </>
 
         )
@@ -29,22 +31,22 @@ class Profile_Header_Container extends React.Component {
 
 
 let mapStateToProps = (state) => {
-    if(state.profile_page.user_data.fullName){
+    if (state.profile_page.user_data.fullName) {
         return {
-            user_data: state.profile_page.user_data,
-            isLoading: state.profile_page.isLoading,
+            user_data: getProfileUserData(state),
+            isLoading: getProfileIsLoading(state),
             status_data: state.profile_page.status_data,
         }
-    } else{
-        return{
+    } else {
+        return {
             user_data: state.profile_page.user_data_default,
-            isLoading: state.profile_page.isLoading,
+            isLoading: getProfileIsLoading(state),
             status_data: state.profile_page.status_data,
         }
     }
 };
 
-export default  compose(
-    connect(mapStateToProps, {getProfileDataTC, getStatusDataTC, upStatusDataTC,}),
+export default compose(
+    connect(mapStateToProps, { getProfileDataTC, getStatusDataTC, upStatusDataTC, }),
     withRouter,
 )(Profile_Header_Container) 

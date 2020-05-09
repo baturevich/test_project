@@ -13,7 +13,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-         <SocNet store={store} />
+         <SocNet />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

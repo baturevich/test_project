@@ -1,7 +1,12 @@
-.pofile__header {
-  position: relative;
+.profile__header {
+  width: 100%;
+  padding: 0 !important;
+}
+.profile__info{
+  background-color: #fff;
   margin-bottom: 20px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), inset 0 -1px 0 0 #dadce0;
+  border-radius: 5px;
 }
 
 .profile__cover {
@@ -15,13 +20,11 @@
   border-radius: 5px;
 }
 
-.profile__preview {
-  padding: 50px 30px 20px 30px;
+.profile__content {
+  padding: 20px 30px 20px 30px;
   position: relative;
-  display: flex;
   background-color: #fff;
   color: #202124;
-  border-radius: 5px;
 }
 
 .soc_net_on_profile {
@@ -39,75 +42,34 @@
 .soc_net_on_profile__item a i {
   font-weight: 300;
 }
-
-.profile_data {
-  font-size: 14px;
-  text-transform: lowercase;
-  text-align: center;
-  color: #5f6368;
-
-}
-
-.profile_data__number {
-  margin-bottom: 5px;
-  font-size: 18px;
-  font-weight: 400;
-  color: #202124;
-}
-
-.profile__item-main {
-  position: absolute;
-  top: -30%;
-  left: 50%;
-
-}
-
-.short_data_content {
-  justify-content: space-around;
-}
-
-.profile__item_img_block {
-  width: 100% !important;
-  left: 0;
-  top: -50%;
-  position: absolute;
+.short_data_content{
+  margin-top: 175px;
 }
 
 .profile__item {
   display: flex;
   align-items: center;
-  width: 33.333%;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .profile__img {
-  position: absolute;
-  width: 100px;
+  width: 200px;
   height: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  border-radius: 100%;
+  border-radius: 10px;
 }
 
 .profile__name {
-  text-align: center;
+  text-align: left;
   color: #202124;
   font-size: 28px;
   font-weight: 600;
+  margin-bottom: 10px;
 }
 
-.profile_data:last-child {
-  margin-right: 0;
-}
 .status{
   padding: 3px 0;
   width: 100%;
-  display: flex;
-  justify-content: flex-end;
+  margin-bottom: 10px;
 }
 .status:hover{
   background: #fafafb;
@@ -125,15 +87,13 @@
   font-size: 12px;
 }
 
-.assets {
-  background: #fff;
-  padding: 0 30px 30px 30px;
-  display: flex;
-  align-items: center;
-}
+
 
 .button_group {
+  margin-top: 10px;
   display: flex;
+  flex-direction: column;
+
 }
 
 .button_group button,
@@ -147,16 +107,15 @@
   color: #fff !important;
   border: 2px solid transparent;
   transition: all .2s ease;
-  width: 120px;
-}
-
-.button_group button:first-child {
-  margin-right: 20px;
+  width: 200px;
+  margin-bottom: 10px;
+  height: 40px;
 }
 .show_more{
   margin-left: auto;
   background: transparent;
   border: none;
+  padding: 0;
 }
 .show_more:focus, 
 .show_more:active{
@@ -164,6 +123,24 @@
   background: transparent;
   border: none;
 }
-.show_more i{
-  margin-left: 10px;
+.profile_data {
+  
+  font-size: 14px;
+  text-transform: lowercase;
+  text-align: center;
+  color: #5f6368;
+  margin-right: 20px;
+
+}
+.profile_data:last-child {
+  margin-right: 0;
+}
+.profile_data__number {
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #202124;
+}
+.profile_data:last-child{
+  margin-right: 0;
 }

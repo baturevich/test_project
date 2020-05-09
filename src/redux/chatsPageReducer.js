@@ -10,7 +10,12 @@ let currentData = hour + ":" + minutes;
 
 let initialState = {
     dialogs_data: [],
-    messages_data: [],
+    messages_data: [{
+        id: Math.random()*3,
+        name: "Kirill Baturevich",
+        text: "mess_text",
+        date: "12:09",
+        imgUrl: "https://baturevich.ru/images/cn/user2.jpg",},],
     mes_header_data: {},
     isLoading:false,
 };
