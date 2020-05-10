@@ -2,12 +2,6 @@
   width: 100%;
   padding: 0 !important;
 }
-.profile__info{
-  background-color: #fff;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), inset 0 -1px 0 0 #dadce0;
-  border-radius: 5px;
-}
 
 .profile__cover {
   border-radius: 5px;
@@ -20,13 +14,22 @@
   border-radius: 5px;
 }
 
-.profile__content {
-  padding: 20px 30px 20px 30px;
+.profile__info {
+  padding: 20px 30px 20px 30px !important;
   position: relative;
-  background-color: #fff;
   color: #202124;
+  background-color: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), inset 0 -1px 0 0 #dadce0;
+  border-radius: 5px;
 }
-
+.main_info{
+  display: flex;
+  flex-direction: column;
+}
+.main_info_item{
+  border-bottom: 1px solid #f1f1f1
+}
 .soc_net_on_profile {
   width: 100%;
   display: flex;
@@ -42,9 +45,7 @@
 .soc_net_on_profile__item a i {
   font-weight: 300;
 }
-.short_data_content{
-  margin-top: 175px;
-}
+
 
 .profile__item {
   display: flex;
@@ -66,14 +67,16 @@
   margin-bottom: 10px;
 }
 
-.status{
+.status {
   padding: 3px 0;
   width: 100%;
   margin-bottom: 10px;
 }
-.status:hover{
+
+.status:hover {
   background: #fafafb;
 }
+
 .status span {
   font-size: 16px;
   cursor: pointer;
@@ -97,7 +100,7 @@
 }
 
 .button_group button,
-.button_group a  {
+.button_group a {
   cursor: pointer;
   text-align: center;
   font-size: 14px;
@@ -111,20 +114,23 @@
   margin-bottom: 10px;
   height: 40px;
 }
-.show_more{
-  margin-left: auto;
+
+.show_more {
+  margin-right: auto;
   background: transparent;
   border: none;
   padding: 0;
 }
-.show_more:focus, 
-.show_more:active{
+
+.show_more:focus,
+.show_more:active {
   outline: none;
   background: transparent;
   border: none;
 }
+
 .profile_data {
-  
+
   font-size: 14px;
   text-transform: lowercase;
   text-align: center;
@@ -132,15 +138,54 @@
   margin-right: 20px;
 
 }
+.short_data_content{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 .profile_data:last-child {
   margin-right: 0;
 }
+
 .profile_data__number {
   margin-bottom: 5px;
   font-size: 18px;
   font-weight: 400;
   color: #202124;
 }
-.profile_data:last-child{
+
+.profile_data:last-child {
   margin-right: 0;
+}
+
+.more_info {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 14px;
+}
+
+.more_info li {
+  margin-bottom: 5px;
+  color: #5f6368;
+}
+
+.more_info li:last-child {
+  margin-bottom: 0;
+}
+
+.more_info li span {
+  margin-left: 20px;
+  color: #000;
+}
+
+.hide_more {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  padding: 0;
+  outline: none;
+  background: transparent;
+  border: none;
+  margin-top: 20px;
+  font-size: 14px;
 }

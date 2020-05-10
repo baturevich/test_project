@@ -3,7 +3,7 @@ import s from './Profile_Left_Side.module.css'
 
 const Profile_Left_Side = () => {
     return (
-        <div className={`${s.content} col-sm-4`}>
+        <div className={`${s.content} col-sm-5`}>
 
 
         </div>

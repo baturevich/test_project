@@ -1,5 +1,10 @@
 import { AuthAPI } from "../API/Api";
 import { stopSubmit } from "redux-form";
+
+const IS_LOADING = "IS_LOADING";
+const SET_AUTH_USER_DATA = "SET_AUTH_USER_DATA";
+const SET_AUTH_DATA = "SET_AUTH_DATA";
+
 let initialState = {
     data :{},
     isLoading: false,
@@ -18,17 +23,17 @@ let initialState = {
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_AUTH_USER_DATA':{
+        case IS_LOADING:{
+            return{...state, isLoading: action.answer}
+        }
+        case SET_AUTH_USER_DATA :{
             return{
                 ...state,
                 data: action.auth_data,
                 isAuth: true,
             }
-        }
-        case 'IS_LOADING':{
-            return{...state, isLoading: action.answer}
-        }
-        case 'SET_AUTH_DATA':{
+        }  
+        case SET_AUTH_DATA:{
             return{...state, isAuth: action.answer}
         }
          default :{
@@ -37,34 +42,31 @@ const authReducer = (state = initialState, action) => {
     };
 };
 
-export const setAuthUserDataAC = (auth_data) => ({type: 'SET_AUTH_USER_DATA', auth_data});
-export const isLoadingAC = (answer) => ({type: 'IS_LOADING', answer});
+export const isLoadingAC = (answer) => ({type: IS_LOADING, answer});
+export const setAuthUserDataAC = (auth_data) => ({type: SET_AUTH_USER_DATA, auth_data});
 export const isAuth = ()=> (initialState.isAuth);
-export const setAuthData = (answer)=>({type:'SET_AUTH_DATA', answer});
+export const setAuthData = (answer)=>({type: SET_AUTH_DATA, answer});
 
 export const getAuthDataTC = () =>{
-    return (dispatch)=>{
-     return AuthAPI.getAuthData()
-          .then(response=>{
-              let isLogin = response.data.resultCode;
-              if(isLogin == 0){
-                dispatch(setAuthUserDataAC(response.data.data))
-              } 
-          })
+    return async (dispatch)=>{
+     const response = await AuthAPI.getAuthData();
+        let isLogin = response.data.resultCode;
+        if (isLogin == 0) {
+            dispatch(setAuthUserDataAC(response.data.data));
+        }
     }
 }
 export const loginTC = (login_data)=>{
-    return(dispatch)=>{
+    return async (dispatch)=>{
         dispatch(isLoadingAC(true))
-        AuthAPI.authorize(login_data)
-            .then(response=>{
-                if(response.data.resultCode == 0){
-                    dispatch(setAuthData(true))
-                    dispatch(isLoadingAC(false))
-                } else{
-                    dispatch(stopSubmit("login", {_error: response.data.messages[0]}))
-                }        
-        })
+       const response = await AuthAPI.authorize(login_data);
+        if (response.data.resultCode == 0) {
+            dispatch(setAuthData(true));
+            dispatch(isLoadingAC(false));
+        }
+        else {
+            dispatch(stopSubmit("login", { _error: response.data.messages[0] }));
+        }
     }  
 }
 

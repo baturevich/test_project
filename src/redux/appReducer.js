@@ -1,4 +1,5 @@
 import { getAuthDataTC } from "./authReducer";
+const INITIALIZATION_SUCCESSFUL = "INITIALIZATION_SUCCESSFUL";
 
 let initialState = {
     initialized: false,
@@ -6,7 +7,7 @@ let initialState = {
 
 const appReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'INITIALIZATION_SUCCESSFUL':{
+        case INITIALIZATION_SUCCESSFUL:{
             return{
                 ...state,
                 initialized: true
@@ -18,7 +19,7 @@ const appReducer = (state = initialState, action) => {
     };
 };
 
-export const intializationSuccessfullAC = () => ({type: 'INITIALIZATION_SUCCESSFUL'});
+export const intializationSuccessfullAC = () => ({type: INITIALIZATION_SUCCESSFUL});
 
 export const initializeTC = () =>{
     return (dispatch)=>{

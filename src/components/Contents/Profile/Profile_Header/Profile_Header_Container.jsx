@@ -1,35 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Profile_Header from './Profile_Header';
 import { connect } from 'react-redux';
 import {
-    getProfileDataTC, getStatusDataTC,
-    upStatusDataTC, getProfileUserData, getProfileIsLoading
+    getProfileDataTC, getStatusDataTC,upStatusDataTC,
 } from '../../../../redux/profilePageReducer';
+import { getProfileIsLoading, getProfileUserData } from '../../../../redux/selectors';
 import Preloader from '../../../common/Preloader/Preloader';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 
-class Profile_Header_Container extends React.Component {
 
-    render() {
-        return (
-            <>
-                {this.props.isLoading == true
-                    ? <Preloader />
-                    : <Profile_Header user_data={this.props.user_data}
-                        user_data_default={this.props.user_data_default}
-                        status_data={this.props.status_data}
-                        upStatusDataTC={this.props.upStatusDataTC}
+const Profile_Header_Container = (props) => {
+    return (
+        <>
+            {props.isLoading == true
+                ? <Preloader />
+                : <Profile_Header 
+                    user_data={props.user_data}
+                    user_data_default={props.user_data_default}
+                    status_data={props.status_data}
+                    upStatusDataTC={props.upStatusDataTC}                 
+                />
+            }
+        </>
 
-                    />
-                }
-            </>
-
-        )
-    }
+    )
 }
-
-
 let mapStateToProps = (state) => {
     if (state.profile_page.user_data.fullName) {
         return {

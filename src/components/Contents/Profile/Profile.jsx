@@ -7,7 +7,6 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
-
 const Profile = (props) => {
     useEffect(() => {
         let user_id = props.match.params.user_id;
@@ -25,7 +24,4 @@ const Profile = (props) => {
     );
 }
 
-export default compose(
-    connect(null, { getStatusDataTC, getProfileDataTC }),
-    withRouter,
-)(Profile);
+export default compose(connect(null, { getStatusDataTC, getProfileDataTC }),withRouter,)(Profile);

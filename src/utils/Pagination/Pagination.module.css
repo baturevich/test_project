@@ -1,0 +1,41 @@
+.pagination{
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #f1f1f1;
+}
+.pagination li{
+    position: relative;
+    display: block;
+    max-width: 20px;
+    min-width: 20px;
+    text-align: center;
+    margin-right: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+}
+.selected{
+    
+    font-weight: 600;
+}
+.selected::after{
+    content:'';
+    position: absolute;
+    bottom: -20%;
+    left: 45%; 
+    transform: rotate(45deg);
+    background: #000;
+    width: 7px;
+    height: 1px;
+}
+.selected::before{
+    content:'';
+    position: absolute;
+    right: 45%;
+    bottom: -20%;
+    transform: rotate(135deg);
+    background: #000;
+    width: 7px;
+    height: 1px;
+}

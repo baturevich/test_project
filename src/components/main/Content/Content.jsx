@@ -5,18 +5,15 @@ import Chats from '../../Contents/Chats/Chats';
 import Users from '../../Contents/Users/Users';
 
 
-
-const Content = (props) => {
-
-  return (
-    <div className="content_container">
-      <div className="container-fluid">
-        <Route path="/profile/:user_id" render={() => <Profile />} />
-        <Route path="/chats" render={() => <Chats/>} />
-        <Route path='/users' render={() => <Users />} />
+const Content = (props)=> {
+    return (
+      <div className="content_container">
+        <div className="container-fluid">
+          <Route path="/profile/:user_id" render={() => <Profile />} />
+          <Route path="/chats" render={() => <Chats />} />
+          <Route path='/users' render={() => <Users />} />
+        </div>
       </div>
-    </div>
-  );
+    );
 }
-
 export default Content;

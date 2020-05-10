@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import s from './Dialogs.module.css';
-import Dialog_Container from './Dialog/Dialog_Container';
-
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
+import { getDialogsDataTC } from '../../../../redux/chatsPageReducer';
+import Dialog from './Dialog/Dialog';
 
 const Dialogs = (props) => {
+    useEffect(()=>{
+        props.getDialogsDataTC(1, 10)
+    },[])
     return (
         <div className="col-md-4">
             <div className={s.dialogs}>
@@ -15,11 +21,14 @@ const Dialogs = (props) => {
                     </div>
                 </div>
                 <div className={s.dialog_wrapper}>
-                    <Dialog_Container/>
+                    {props.dialogs_data.map(dialog =>(
+                        <Dialog key={Math.random() * 10} dialog={dialog}/>
+                    ))}       
                 </div>
             </div>
         </div>
     );
 };
-
-export default Dialogs;
+const mapStoreToProps = (state) => ({dialogs_data: state.chats_page.dialogs_data})
+ 
+export default compose(connect(mapStoreToProps,{getDialogsDataTC,}),withRouter,)(Dialogs);
