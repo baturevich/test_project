@@ -9,6 +9,8 @@ const Pagination = (props) => {
             pages.push(i)
         }
     }
+    let porionsCount = Math.ceil(pagesCount / (props.portionSize || 10))
+    
     const onChangePage = (p) => {
         let page_number = p;
         props.onChangePage(page_number, props.pageSize)

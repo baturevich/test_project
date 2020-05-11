@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import User_Item from './User_Item/User_Item';
 import { useEffect } from 'react';
 import Preloader from '../../common/Preloader/Preloader';
-import Pagination from '../../../utils/Pagination/Pagination';
+import Pagination from '../../common/Pagination/Pagination';
 const Users = (props) => {
     useEffect(()=>{
         props.getUsersTC(props.currentPage, props.pageSize)
@@ -27,6 +27,7 @@ const Users = (props) => {
                     pageSize={props.pageSize}
                     currentPage={props.currentPage}
                     onChangePage={onChangePage}
+                    portionSize={10}
                     />
                     {props.isLoading 
                     ? <Preloader/>
