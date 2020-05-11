@@ -29,14 +29,15 @@ const User_Item = (props) => {
                             onClick={() => props.followedUser(props.user.id)}>Follow</button>
                     }
                 </div>
-                {props.device === "mobile" &&
+                {props.device === "mobile" ?
                     props.user.followed
                         ? <button  className={s.mob_btn} 
                             disabled={props.followInProgress.some(id => id === props.user.id)}
                             onClick={() => props.unFollowedUser(props.user.id)}>Unfollow</button>
                         : <button className={s.mob_btn} 
                             disabled={props.followInProgress.some(id => id === props.user.id)}
-                            onClick={() => props.followedUser(props.user.id)}>Follow</button>  
+                            onClick={() => props.followedUser(props.user.id)}>Follow</button> 
+                  : null           
                 }
                 </div>
             </div>

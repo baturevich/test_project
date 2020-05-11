@@ -10,7 +10,7 @@ const Dialogs = (props) => {
     useEffect(()=>{
         props.getDialogsDataTC(1, 10)
     },[])
-    let urlForDialog = props.device == "mobile" ?  "/chats/messages/" : "/chats/"
+    let urlForDialog = props.device === "mobile" ?  "/chats/messages/" : "/chats/"
     return (
         <div className="col-md-4">
             <div className={s.dialogs}>

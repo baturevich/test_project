@@ -14,6 +14,7 @@ class Login extends React.Component {
         let promise = this.props.loginTC(a);
         Promise.all([promise])
             .then((result_code) => {
+                debugger;
                 if (result_code[0] === 0) {
                     this.props.history.push(`/profile/${+ this.props.auth_user_id}`)
                 }

@@ -7,12 +7,13 @@ import { compose } from 'redux';
 class Navigation_Container extends React.Component{
     render(){
         return(
-            <Navigation user_id={this.props.user_id}/>
+            <Navigation user_id={this.props.user_id} device={this.props.device}/>
         );
     }
 }
 const mapStateToProps = (state)=> ({
     user_id: state.auth_data.data.id,
+    device: state.app.device,
 })
 
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getAuthDataTC } from '../../redux/authReducer';
 import Content from './Content/Content';
 import Header_Container from './Header/Header_Container';
-import Navigation_Container from './LeftSide/Navigation_Container';
+import Navigation_Container from './Navigation/Navigation_Container';
 
 class SocNet extends React.Component{
     componentDidMount(){
