@@ -164,17 +164,23 @@
   font-size: 14px;
 }
 
-.more_info li {
-  margin-bottom: 5px;
-  color: #5f6368;
+.more_item{
+  display: flex;
+  align-self: center;
 }
-
-.more_info li:last-child {
-  margin-bottom: 0;
+.user_features{
+  display: flex;
 }
-
-.more_info li span {
-  margin-left: 20px;
+.user_features p{
+  margin-bottom: 7px;
+}
+.user_features div:first-child p{
+  color: #828282;
+}
+.user_features div:last-child{
+  margin-left: 50px;
+}
+.user_features:last-child p{
   color: #000;
 }
 

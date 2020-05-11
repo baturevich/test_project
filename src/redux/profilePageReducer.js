@@ -119,13 +119,10 @@ export const upStatusDataTC = (new_status_data)=>{
     }
 };
 export const reqMoreUserDataTC = (user_id)=>{
-    let data = {
-        about_me: {quest:"About me", answer: "Programmer on React.js"},
-        attitude_to_smoking: {quest:"Autitude to smoking", answer:"Negative"},
-        attitude_to_alcohol: {quest:"Autitude to alcohol", answer:"Negative"},
-    }
+    // Some requests
+    // After all requests
     return(dispatch) =>{
-        dispatch(setMoreUserData(data))
+        dispatch(setMoreUserData("somthing"))
     }
 };
 export default profilePageReducer;

@@ -67,6 +67,7 @@ export const loginTC = (login_data)=>{
         else {
             dispatch(stopSubmit("login", { _error: response.data.messages[0] }));
         }
+        return response.data.resultCode;
     }  
 }
 

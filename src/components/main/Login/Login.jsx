@@ -5,12 +5,20 @@ import { loginTC } from '../../../redux/authReducer';
 import { requiared, maxLength } from '../../../utils/validators';
 import InputLoginControl from '../../common/FormControls/FormLoginControl';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'redux';
 
 class Login extends React.Component {
     onSubmit = (formData) => {
         let a = { ...formData, captcha: true }
-        this.props.loginTC(a);
+        let promise = this.props.loginTC(a);
+        Promise.all([promise])
+        .then((result_code)=>{
+            debugger;
+            if(result_code[0] === 0){
+                this.props.history.push(`/profile/${+ this.props.auth_user_id}`)
+            } 
+        })        
     }
     render() {
         return (
@@ -60,4 +68,6 @@ const mapStateToprops = (state) => {
         auth_user_id: state.auth_data.data.id,
     }
 }
-export default connect(mapStateToprops, { loginTC })(Login);
+export default compose(connect(mapStateToprops, { loginTC }),
+withRouter,
+)(Login)

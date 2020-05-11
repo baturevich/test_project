@@ -19,9 +19,14 @@ const Profile_Info = (props) => {
         </div>
     } return (
         <div className={s.more_info}>
-            <ul>
-                {props.more_user_data.map(d => (<li>{d.quest}:<span> {d.answer}</span></li>))}
-            </ul>
+            <div className={s.user_features}>
+                <div>
+                    {props.more_user_data.map(d => <p>{d.quest}:</p>)}
+                </div>
+                <div>
+                    {props.more_user_data.map(d => <p>{d.answer}:</p>)}
+                </div>
+            </div>
             <button className={s.hide_more} onClick={() => toggleMoreInfo(false)}>
                 Hide more information<i className="fa fa-angle-down"></i>
             </button>

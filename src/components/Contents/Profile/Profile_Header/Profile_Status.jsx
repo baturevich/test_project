@@ -9,7 +9,7 @@ const Profile_Status = (props) => {
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status_data)
     const activEditMode = () => {
-        setEditMode(true)
+        props.match.params.user_id == props.auth_user_id && setEditMode(true)
     }
     useEffect(()=>{
         setStatus(props.status_data)

@@ -75,15 +75,15 @@ export const setTotalUsersCountAC = (user_count) => ({type: SET_TOTAL_USERS_COUN
 export const isLoadingAC = (answer) => ({type: IS_LOADING, answer});
 export const toggleInFollowProgressAC = (answer, user_id) =>({type: TOGGLE_FOLLOW_PROGRESS, answer, user_id});
 
-export const getUsersTC = (page, pageSize) =>{
+export const getUsersTC = (page, pageSize,) =>{
     return async (dispatch) =>{
         dispatch(isLoadingAC(true))
         dispatch(setCurrentPageAC(page))
         let data = await UserAPI.getUsers(page, pageSize)
-
         dispatch(isLoadingAC(false))
         dispatch(setUsersAC(data.items));
-        dispatch(setTotalUsersCountAC(200));
+        dispatch(setTotalUsersCountAC(data.totalCount));
+        // dispatch(setTotalUsersCountAC(200));
     }
 }
 

@@ -27,7 +27,7 @@ const Users = (props) => {
                     pageSize={props.pageSize}
                     currentPage={props.currentPage}
                     onChangePage={onChangePage}
-                    portionSize={10}
+                    portionSize={20}
                     />
                     {props.isLoading 
                     ? <Preloader/>

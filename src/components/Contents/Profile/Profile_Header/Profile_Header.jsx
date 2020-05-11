@@ -11,7 +11,7 @@ const Profile_Header = (props) => {
         <div className="col-md-3 col-xs-12 col-sm-12">
           <div className={`${s.profile__item} ${s.profile__item_img_block}`}>
             <img src={
-              props.user_data.photos.small || "https://baturevich.ru/images/cn/user2.jpg"
+              props.user_data.photos.large || "https://baturevich.ru/images/cn/user2.jpg"
             }
               alt="User_img" className={s.profile__img} />
           </div>
