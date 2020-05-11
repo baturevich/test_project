@@ -13,21 +13,28 @@ class Login extends React.Component {
         let a = { ...formData, captcha: true }
         let promise = this.props.loginTC(a);
         Promise.all([promise])
-        .then((result_code)=>{
-            debugger;
-            if(result_code[0] === 0){
-                this.props.history.push(`/profile/${+ this.props.auth_user_id}`)
-            } 
-        })        
+            .then((result_code) => {
+                if (result_code[0] === 0) {
+                    this.props.history.push(`/profile/${+ this.props.auth_user_id}`)
+                }
+            })
     }
     render() {
         return (
             <div className={s.login}>
-                <div className={s.offer}>
-                    <h1>Vision.com</h1>
-                    <p>Special for you</p>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-6 col-xs-12">
+                            <div className={s.offer}>
+                                <h1>Vision.com</h1>
+                                <p>Special for you</p>
+                            </div>
+                        </div>
+                        <div className="col-md-6 col-xs-12">
+                            <LoginReduxForm onSubmit={this.onSubmit} />
+                        </div>
+                    </div>
                 </div>
-                <LoginReduxForm onSubmit={this.onSubmit} />
             </div>
         );
     }
@@ -69,5 +76,5 @@ const mapStateToprops = (state) => {
     }
 }
 export default compose(connect(mapStateToprops, { loginTC }),
-withRouter,
+    withRouter,
 )(Login)

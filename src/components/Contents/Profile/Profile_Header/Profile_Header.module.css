@@ -23,13 +23,16 @@
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), inset 0 -1px 0 0 #dadce0;
   border-radius: 5px;
 }
-.main_info{
+
+.main_info {
   display: flex;
   flex-direction: column;
 }
-.main_info_item{
+
+.main_info_item {
   border-bottom: 1px solid #f1f1f1
 }
+
 .soc_net_on_profile {
   width: 100%;
   display: flex;
@@ -138,7 +141,8 @@
   margin-right: 20px;
 
 }
-.short_data_content{
+
+.short_data_content {
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -164,23 +168,28 @@
   font-size: 14px;
 }
 
-.more_item{
+.more_item {
   display: flex;
   align-self: center;
 }
-.user_features{
+
+.user_features {
   display: flex;
 }
-.user_features p{
+
+.user_features p {
   margin-bottom: 7px;
 }
-.user_features div:first-child p{
+
+.user_features div:first-child p {
   color: #828282;
 }
-.user_features div:last-child{
+
+.user_features div:last-child {
   margin-left: 50px;
 }
-.user_features:last-child p{
+
+.user_features:last-child p {
   color: #000;
 }
 
@@ -194,4 +203,26 @@
   border: none;
   margin-top: 20px;
   font-size: 14px;
+}
+
+@media screen and (max-width:768px) {
+  .profile__item {
+    justify-content: center;
+  }
+
+  .button_group {
+    flex-direction: row;
+  }
+
+  .button_group button,
+  .button_group a {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-left: 5px;
+  }
+  .button_group button,
+  .button_group a:first-child{
+    margin-left: 0;
+  }
 }

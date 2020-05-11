@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getAuthDataTC } from '../../redux/authReducer';
 import Content from './Content/Content';
 import Header_Container from './Header/Header_Container';
-import Left_Side_Container from './LeftSide/Left_Side_Container';
+import Navigation_Container from './LeftSide/Navigation_Container';
 
 class SocNet extends React.Component{
     componentDidMount(){
@@ -13,7 +13,7 @@ class SocNet extends React.Component{
         return <div className="CN_wrapper">
         <Header_Container />
         <Content/>
-        <Left_Side_Container />
+        <Navigation_Container />
       </div>
     }
 }

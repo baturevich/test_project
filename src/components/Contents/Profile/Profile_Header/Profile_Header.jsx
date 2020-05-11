@@ -39,9 +39,6 @@ const Profile_Header = (props) => {
               <p className={s.profile_data__number}>{props.user_data.posts_count || "1"}</p>Posts
                 </div>
             <div className={s.profile_data}>
-              <p className={s.profile_data__number}>{props.user_data.friends_count || "2"}</p>Friends
-                </div>
-            <div className={s.profile_data}>
               <p className={s.profile_data__number}>{props.user_data.music_count || "64"}</p>Music
                 </div>
             <div className={s.profile_data}>

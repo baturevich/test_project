@@ -27,7 +27,7 @@ const Users = (props) => {
                     pageSize={props.pageSize}
                     currentPage={props.currentPage}
                     onChangePage={onChangePage}
-                    portionSize={20}
+                    portionSize={props.device === "mobile" ? 5 : 20}
                     />
                     {props.isLoading 
                     ? <Preloader/>
@@ -36,6 +36,7 @@ const Users = (props) => {
                             unFollowedUser={unFollowedUser}
                             followedUser={followedUser}
                             followInProgress={props.followInProgress}
+                            device={props.device}
                         />
                     ))}
                 </div>
@@ -51,6 +52,7 @@ const mapStateToProps = (state) => {
         pageSize: state.users_page.pageSize,
         isLoading: state.users_page.isLoading,
         followInProgress: state.users_page.followInProgress,
+        device:state.app.device
     }
 };
 export default connect(mapStateToProps, { getUsersTC, followTC, unFollowTC, })(Users);

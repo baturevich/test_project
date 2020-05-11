@@ -77,3 +77,12 @@
     border: 2px solid transparent;
     transition: all .2s ease;
   }
+@media screen and (max-width:768px){
+  .header__wrapper{
+    justify-content: space-around;
+  }
+  .input_wrapper{
+    display: none;
+  }
+  
+}

@@ -7,6 +7,7 @@ body {
   color: #63656b;
   background-color: #fafafb;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 a:hover {
@@ -61,7 +62,7 @@ a:hover {
   background-color: #fff;
   box-shadow: 0 2px 6px 0 rgba(0,0,0,0.12), inset 0 -1px 0 0 #dadce0;
 }
-.left_side{
+.navigation{
   position: fixed;
   z-index: 5;
   top: 80px;
@@ -80,4 +81,17 @@ a:hover {
   margin-top: 80px;
   margin-right: 1.25%;
   position: relative;
+}
+@media screen and (max-width:768px){
+  .navigation{
+    border-radius: 0;
+    top: auto;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  .content_container{
+    max-width: 100%;
+    margin-bottom: 60px;
+  }
 }

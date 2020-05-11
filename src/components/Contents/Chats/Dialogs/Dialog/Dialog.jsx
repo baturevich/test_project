@@ -2,8 +2,9 @@ import React from 'react';
 import s from './Dialog.module.css';
 import { NavLink } from 'react-router-dom';
 
-const Dialog = (props) => {
-    return <NavLink to={"/chats" + "/" + props.dialog.id} >
+const Dialog = React.memo((props) => {
+
+    return <NavLink to={props.url + props.dialog.id} >
         <div className={s.dialog} >
             <img src={props.dialog.photos.small ||  "https://baturevich.ru/images/cn/user2.jpg"}
                 alt="User-img" className={`${s.user_img} ${s.online}`} />
@@ -13,5 +14,5 @@ const Dialog = (props) => {
             </div>
         </div>
     </NavLink>
-};
+});
 export default Dialog;

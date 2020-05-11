@@ -13,5 +13,14 @@
     padding-top: 10px;
     overflow-y: auto;
     border-bottom:1px solid #f1f1f1;
+    overflow-x: hidden;
+}
+@media screen and (max-width:768px){
+    .messages{
+        padding-right: 0;
+    }
+    .all_mes{
+        padding: 0 10px;
+    }
 }
 

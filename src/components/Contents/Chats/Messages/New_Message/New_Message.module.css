@@ -37,3 +37,9 @@
     margin-right: 10px;
     color: #a6abb6;
 }
+@media screen and (max-width:768px){
+    .wrapper{
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+}

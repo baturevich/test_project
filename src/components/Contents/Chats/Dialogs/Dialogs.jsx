@@ -10,6 +10,7 @@ const Dialogs = (props) => {
     useEffect(()=>{
         props.getDialogsDataTC(1, 10)
     },[])
+    let urlForDialog = props.device == "mobile" ?  "/chats/messages/" : "/chats/"
     return (
         <div className="col-md-4">
             <div className={s.dialogs}>
@@ -22,13 +23,15 @@ const Dialogs = (props) => {
                 </div>
                 <div className={s.dialog_wrapper}>
                     {props.dialogs_data.map(dialog =>(
-                        <Dialog key={Math.random() * 10} dialog={dialog}/>
+                        <Dialog key={Math.random() * 10} dialog={dialog} url={urlForDialog} />
                     ))}       
                 </div>
             </div>
         </div>
     );
 };
-const mapStoreToProps = (state) => ({dialogs_data: state.chats_page.dialogs_data})
+const mapStoreToProps = (state) => (
+    {dialogs_data: state.chats_page.dialogs_data,
+    device:state.app.device})
  
 export default compose(connect(mapStoreToProps,{getDialogsDataTC,}),withRouter,)(Dialogs);

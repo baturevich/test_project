@@ -1,30 +1,36 @@
-.user{
-    padding: 20px 0;
+.user {
     display: flex;
     align-items: center;
+}
+.user_wrapper{
+    padding: 20px 0;
     border-bottom: 1px solid #f1f1f1;
 }
-.user img{
+
+.user img {
     cursor: pointer;
     width: 80px;
     height: 80px;
     border-radius: 100%;
     margin-right: 20px;
 }
-.name{
+
+.name {
     cursor: pointer;
-    color:#000;
+    color: #000;
     margin-bottom: 5px;
 }
-.city{
+
+.city {
     font-size: 14px;
 }
-.user button{
+
+.user button {
     cursor: pointer;
     font-size: 14px;
     display: block;
     background: #4285f4;
-    padding: 10px ;
+    padding: 10px;
     width: 100px;
     text-align: center;
     border-radius: 5px;
@@ -33,6 +39,32 @@
     margin-left: auto;
     transition: all .2s ease;
 }
-.user button:disabled{
+
+.user button:disabled {
     background: #e90028;
+}
+
+@media screen and (max-width:768px) {
+    .user button {
+        display: none;
+    }
+
+    .mob_btn {
+        cursor: pointer;
+        font-size: 14px;
+        display: block;
+        background: #4285f4;
+        padding: 10px;
+        width: 100px;
+        text-align: center;
+        border-radius: 5px;
+        color: #fff;
+        border: none;
+        margin-top: 10px;
+        transition: all .2s ease;
+    }
+    .mob_btn:disabled {
+        background: #e90028;
+    }
+    
 }

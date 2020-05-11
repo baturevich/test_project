@@ -2,10 +2,9 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Profile from '../../Contents/Profile/Profile';
 import withSuspense from '../../common/HOComponents/withSuspense';
+import { connect } from 'react-redux';
 const Chats = React.lazy(() => import('../../Contents/Chats/Chats'));
 const Users = React.lazy(() => import('../../Contents/Users/Users'));
-
-
 
 
 const Content = (props)=> {
@@ -19,4 +18,5 @@ const Content = (props)=> {
       </div>
     );
 }
-export default Content;
+const mapStateToProps = (state) =>({device:state.app.device})
+export default connect(mapStateToProps,{})(Content);

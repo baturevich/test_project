@@ -24,3 +24,17 @@
     background-color: #f5f5f5;
     color: #63656b;
   }
+  @media screen and (max-width:768px){
+    .menu{
+      display: flex;
+      justify-content: space-around;
+    }
+    .menu__link{
+      display: flex;
+      justify-content: center;
+      align-items: centers;
+    }
+    .menu__item span{
+      display: none;
+    }
+  }

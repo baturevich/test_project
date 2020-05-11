@@ -63,3 +63,8 @@
     overflow-y: auto;
     max-height: 400px;
 }
+@media screen and (max-width:768px){
+    .dialog_wrapper{
+        max-height: 410px;
+    }
+}
