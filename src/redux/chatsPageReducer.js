@@ -1,6 +1,7 @@
 import { UserAPI, ProfileAPI } from "../API/Api";
 import {GetCurrentDate} from '../utils/GetCurrentDate/GetCurrentDate';
 
+//Actions
 const ADD_MESS = "ADD_MESS";
 const DELETE_MESSAGE = "DELETE_MESSAGE";
 const SET_DIALOGS_DATA = "SET_DIALOGS_DATA";
@@ -36,7 +37,7 @@ const chatsPageReducer = (state = initialState, action) => {
                 date: GetCurrentDate("small_date"),
                 imgUrl: "https://baturevich.ru/images/cn/user2.jpg",
             };
-            if (mess_text != "") {              
+            if (mess_text) {            
                 return{
                     ...state,
                     messages_data: [...state.messages_data, new_mess]
@@ -62,14 +63,14 @@ const chatsPageReducer = (state = initialState, action) => {
             return state;
     };
 };
-
+//Actions Creators
 export const isLoadingAC = (answer)=>({type: IS_LOADING, answer});
 export const addMessAC = (mess_text) => ({type: ADD_MESS, mess_text});
 export const delMessAC = (mess_id) => ({type: DELETE_MESSAGE, mess_id : mess_id});
 export const setDialogsDataAC = (users) =>({type: SET_DIALOGS_DATA, users});
 export const setMessagesDataAC = (mes_data)=>({type: SET_MESSAGES_DATA, mes_data});
 
-
+//Thunks Creators
 export const getDialogsDataTC = (page,page_size) =>{
     return async(dispatch) =>{
         dispatch(isLoadingAC(true));

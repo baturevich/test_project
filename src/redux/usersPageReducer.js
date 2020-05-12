@@ -1,4 +1,6 @@
 import { UserAPI, FollowAPI } from "../API/Api";
+
+//Actions
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
 const SET_USERS = "SET_USERS"
@@ -67,6 +69,7 @@ const userPageReducer = (state = initialState, action) => {
     };
 };
 
+// Action Creators
 export const followAC = (user_id) => ({type: FOLLOW, user_id: user_id});
 export const unfollowAC = (user_id) => ({type: UNFOLLOW, user_id: user_id});
 export const setUsersAC = (users) => ({type: SET_USERS, users: users});
@@ -75,6 +78,8 @@ export const setTotalUsersCountAC = (user_count) => ({type: SET_TOTAL_USERS_COUN
 export const isLoadingAC = (answer) => ({type: IS_LOADING, answer});
 export const toggleInFollowProgressAC = (answer, user_id) =>({type: TOGGLE_FOLLOW_PROGRESS, answer, user_id});
 
+
+//Thunks Creators
 export const getUsersTC = (page, pageSize,) =>{
     return async (dispatch) =>{
         dispatch(isLoadingAC(true))
@@ -83,7 +88,6 @@ export const getUsersTC = (page, pageSize,) =>{
         dispatch(isLoadingAC(false))
         dispatch(setUsersAC(data.items));
         dispatch(setTotalUsersCountAC(data.totalCount));
-        // dispatch(setTotalUsersCountAC(200));
     }
 }
 

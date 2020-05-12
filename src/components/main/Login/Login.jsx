@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Login.module.css'
 import { reduxForm, Field } from 'redux-form';
-import { loginTC } from '../../../redux/authReducer';
+import { loginTC, } from '../../../redux/authReducer';
 import { requiared, maxLength } from '../../../utils/validators';
 import InputLoginControl from '../../common/FormControls/FormLoginControl';
 import { connect } from 'react-redux';
@@ -14,7 +14,6 @@ class Login extends React.Component {
         let promise = this.props.loginTC(a);
         Promise.all([promise])
             .then((result_code) => {
-                debugger;
                 if (result_code[0] === 0) {
                     this.props.history.push(`/profile/${+ this.props.auth_user_id}`)
                 }
@@ -76,6 +75,6 @@ const mapStateToprops = (state) => {
         auth_user_id: state.auth_data.data.id,
     }
 }
-export default compose(connect(mapStateToprops, { loginTC }),
+export default compose(connect(mapStateToprops, { loginTC,  }),
     withRouter,
 )(Login)

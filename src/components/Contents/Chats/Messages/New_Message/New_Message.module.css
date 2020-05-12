@@ -22,18 +22,23 @@
     font-size: 12px;
     border:1px solid #d3d9de;
 }
-.message:hover,
-.message:active,
-.message:focus{
-
+.smile_icons{
+    display: flex;
+    align-items: center;
 }
 .send{
     background: transparent;
     border:none;
-    margin-left: 20px;
+    margin-left: 5px;
+}
+.send:active,
+.send:focus{
+    outline: none;
+    background: transparent;
+    border:none;
 }
 .send i{
-    font-size: 24px;
+    font-size: 28px;
     margin-right: 10px;
     color: #a6abb6;
 }
@@ -41,5 +46,8 @@
     .wrapper{
         padding: 0 10px;
         margin-bottom: 20px;
+    }
+    .smile_icons {
+        display: none;
     }
 }

@@ -45,6 +45,7 @@
 }
 .action i{
     cursor: pointer;
+    font-size: 18px;
 }
 
 .post_content {
@@ -58,7 +59,14 @@
     justify-content: flex-start;
     display: flex;
 }
-
+.like_btn_active{
+    color: #e90028 !important;
+    margin-right: 25px;
+    user-select: none;
+}
+.like_btn_active i{
+    color: #e90028 !important;
+}
 .like_btn {
     margin-right: 20px;
 }

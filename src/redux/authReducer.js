@@ -1,12 +1,15 @@
-import { AuthAPI } from "../API/Api";
+import { AuthAPI, ProfileAPI } from "../API/Api";
 import { stopSubmit } from "redux-form";
 
-const IS_LOADING = "IS_LOADING";
-const SET_AUTH_USER_DATA = "SET_AUTH_USER_DATA";
-const SET_AUTH_DATA = "SET_AUTH_DATA";
+// Actions
+const IS_LOADING = "auth/IS_LOADING";
+const SET_AUTH_DATA = "auth/SET_AUTH_DATA";
+const SET_AUTH_PHOTOS = "auth/SET_AUTH_PHOTOS"
+const SET_AUTH_USER_DATA = "auth/SET_AUTH_USER_DATA";
 
 let initialState = {
     data :{},
+    photos: {},
     isLoading: false,
     isAuth: false,
     user_data_default: {
@@ -36,26 +39,33 @@ const authReducer = (state = initialState, action) => {
         case SET_AUTH_DATA:{
             return{...state, isAuth: action.answer}
         }
+        case SET_AUTH_PHOTOS:{
+            return{...state, photos: action.photos}
+        }
          default :{
             return state
         }
     };
 };
 
-export const isLoadingAC = (answer) => ({type: IS_LOADING, answer});
-export const setAuthUserDataAC = (auth_data) => ({type: SET_AUTH_USER_DATA, auth_data});
-export const isAuth = ()=> (initialState.isAuth);
-export const setAuthData = (answer)=>({type: SET_AUTH_DATA, answer});
 
+// Action Creatos
+export const isAuth = ()=> (initialState.isAuth);
+export const isLoadingAC = (answer) => ({type: IS_LOADING, answer});
+export const setAuthData = (answer)=>({type: SET_AUTH_DATA, answer});
+export const setAuthPhoto = (photos) => ({type: SET_AUTH_PHOTOS, photos});
+export const setAuthUserDataAC = (auth_data) => ({type: SET_AUTH_USER_DATA, auth_data});
+
+// Thanks Creators
 export const getAuthDataTC = () =>{
     return async (dispatch)=>{
      const response = await AuthAPI.getAuthData();
-        let isLogin = response.data.resultCode;
-        if (isLogin == 0) {
+        if (response.data.resultCode == 0) {
             dispatch(setAuthUserDataAC(response.data.data));
         }
     }
 }
+
 export const loginTC = (login_data)=>{
     return async (dispatch)=>{
         dispatch(isLoadingAC(true))
@@ -70,7 +80,12 @@ export const loginTC = (login_data)=>{
         return response.data.resultCode;
     }  
 }
-
+export const reqAuthPhoto = (user_id) =>{
+    return async (dispatch)=>{
+        let response  = await ProfileAPI.getProfileData(user_id)
+            dispatch(setAuthPhoto(response.data.photos))    
+    }
+}
 export const deLoginTC = ()=>{
     return(dispatch)=>{
         AuthAPI.deAuthorize()

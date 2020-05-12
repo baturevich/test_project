@@ -9,19 +9,11 @@ class Header_Container extends React.Component{
 };
 
 const mapDispatchToProps = (state)=>{
-   if(state.auth_data.data.login){
     return{
         name: state.auth_data.data.login,
-        imgUrl: 'https://baturevich.ru/images/cn/user2.jpg',
+        imgUrl: state.auth_data.photos.small,
         user_id: state.auth_data.data.id,
-    }
-       
-   } else{
-    return{
-        name: 'No Name',
-        imgUrl: 'https://baturevich.ru/images/cn/user2.jpg'
-    } 
-   }
+    }    
 }
 
 export default connect(mapDispatchToProps,{deLoginTC })(Header_Container)

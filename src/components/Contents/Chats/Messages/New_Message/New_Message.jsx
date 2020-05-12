@@ -5,10 +5,12 @@ import { Field, reduxForm } from 'redux-form';
 const New_MessageForm = (props) => {
     return (
         <form className={s.wrapper} onSubmit={props.handleSubmit}>
-            <i className="fa fa-smile-o"></i>
-            <i className="fa fa-paperclip"></i>
+            <div className={s.smile_icons}>
+                <i className="fa fa-smile-o"></i>
+                <i className="fa fa-paperclip"></i>
+            </div>
             <Field name={"newMessText"} component={"textarea"} className={s.message} />
-            <button className={s.send}><i className="fa fa-paper-plane-o"></i></button>
+            <button className={s.send}><i className="material-icons">send</i></button>
         </form>
     );
 };

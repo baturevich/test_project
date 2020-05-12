@@ -6,10 +6,13 @@ const IS_LOADING = "profile/IS_LOADING";
 const DELETE_POST = "profile/DELETE_POST";
 const SET_USER_DATA = "profile/SET_USER_DATA";
 const SET_STATUS_DATA = "profile/SET_STATUS_DATA";
+const SET_PROFILE_PHOTO = "profile/SET_PROFILE_PHOTO"
 const SET_MORE_USER_DATA = "profile/SET_MORE_USER_DATA";
 
 
+
 let initialState =   {
+    isSetProfileData: false,
     user_data: {}, status_data: "", posts_data:[], 
     user_data_default: {
         id: 1,
@@ -37,14 +40,12 @@ const profilePageReducer = (state = initialState, action) => {
         }
         case ADD_POST:{
             let post_text = action.post_text;
-            let imgUrl = state.user_data.imgUrl || state.user_data_default.photos.small ;
-            let post_id  = state.posts_data.length;
-            let newPost = {
-                id: post_id,
+            let newPost = { 
+                id: state.posts_data.length,
                 name: state.user_data.name || state.user_data_default.name ,
                 date: GetCurrentDate("full_date"),
                 text: post_text,
-                imgUrl: imgUrl,
+                imgUrl: state.user_data.photos.small || state.user_data_default.photos.small,
                 likeCounts: 0,
                 commentCounts: 0
             };        
@@ -64,13 +65,21 @@ const profilePageReducer = (state = initialState, action) => {
         case SET_USER_DATA:{
             return {
                 ...state,
-                user_data: action.user_data
+                user_data: action.user_data,
+                isSetProfileData: true,
             }
         }
         case SET_STATUS_DATA:{
             return {
                 ...state,
                 status_data: action.status_data
+            }
+        }
+        case SET_PROFILE_PHOTO:{
+            return {
+                ...state,
+                user_data: {...state.user_data, photos: action.photos},
+
             }
         }
         case SET_MORE_USER_DATA:{
@@ -84,14 +93,17 @@ const profilePageReducer = (state = initialState, action) => {
     };
 };
 
-
+// Action Creators
 export const ProfileIsLoadingAC = (answer) => ({type: IS_LOADING, answer});
 export const addPostAC = (post_text) => ({type: ADD_POST, post_text});
 export const deletePostAC = (post_id) => ({type: DELETE_POST, post_id});
 export const setUserDataAC = (user_data) => ({type: SET_USER_DATA, user_data});
 export const setStatusData = (status_data) => ({type: SET_STATUS_DATA, status_data});
 export const setMoreUserData = (data) =>({type: SET_MORE_USER_DATA, data})
+export const setProfilePhoto = (photos) =>({type:SET_PROFILE_PHOTO, photos })
 
+
+// Thanks Creators
 export const getProfileDataTC = (user_id) =>{
     return async(dispatch) =>{
         dispatch(ProfileIsLoadingAC(true))
@@ -125,4 +137,10 @@ export const reqMoreUserDataTC = (user_id)=>{
         dispatch(setMoreUserData("somthing"))
     }
 };
+export const uploadPhotoTC = (photo) =>{
+    return async (dispatch)=>{
+        let response = await ProfileAPI.uploadPhoto(photo)
+        dispatch(setProfilePhoto(response.data.data.photos))
+    }
+}
 export default profilePageReducer;

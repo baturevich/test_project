@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Profile_Header from './Profile_Header';
 import { connect } from 'react-redux';
 import {
-    getProfileDataTC, getStatusDataTC,upStatusDataTC,
+    getProfileDataTC, getStatusDataTC, upStatusDataTC,
 } from '../../../../redux/profilePageReducer';
 import { getProfileIsLoading, getProfileUserData } from '../../../../redux/selectors';
 import Preloader from '../../../common/Preloader/Preloader';
@@ -15,11 +15,9 @@ const Profile_Header_Container = (props) => {
         <>
             {props.isLoading == true
                 ? <Preloader />
-                : <Profile_Header 
+                : props. isSetProfileData && <Profile_Header
                     user_data={props.user_data}
                     user_data_default={props.user_data_default}
-                    status_data={props.status_data}
-                    upStatusDataTC={props.upStatusDataTC}                 
                 />
             }
         </>
@@ -27,18 +25,10 @@ const Profile_Header_Container = (props) => {
     )
 }
 let mapStateToProps = (state) => {
-    if (state.profile_page.user_data.fullName) {
-        return {
-            user_data: getProfileUserData(state),
-            isLoading: getProfileIsLoading(state),
-            status_data: state.profile_page.status_data,
-        }
-    } else {
-        return {
-            user_data: state.profile_page.user_data_default,
-            isLoading: getProfileIsLoading(state),
-            status_data: state.profile_page.status_data,
-        }
+    return {
+        user_data: getProfileUserData(state),
+        isLoading: getProfileIsLoading(state),
+        isSetProfileData: state.profile_page.isSetProfileData,
     }
 };
 

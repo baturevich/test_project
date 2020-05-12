@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getAuthDataTC } from '../../redux/authReducer';
+import { getAuthDataTC, reqAuthPhoto } from '../../redux/authReducer';
 import Content from './Content/Content';
 import Header_Container from './Header/Header_Container';
 import Navigation_Container from './Navigation/Navigation_Container';
 
 class SocNet extends React.Component{
     componentDidMount(){
-        this.props.getAuthDataTC()
+        let promise = this.props.getAuthDataTC()
+        Promise.all([promise])
+            .then(this.props.reqAuthPhoto(this.props.auth_user_id))
     }
     render(){
         return <div className="CN_wrapper">
@@ -17,5 +19,5 @@ class SocNet extends React.Component{
       </div>
     }
 }
-
-export default connect(null,{getAuthDataTC})(SocNet)
+const mapStateToProps = (state)=>({auth_user_id: state.auth_data.data.id,})
+export default connect(mapStateToProps,{getAuthDataTC, reqAuthPhoto})(SocNet)

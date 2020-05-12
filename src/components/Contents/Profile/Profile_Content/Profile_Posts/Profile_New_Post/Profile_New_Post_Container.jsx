@@ -11,13 +11,7 @@ const Profile_New_Post_Container = (props) => {
     };
     return <Profile_New_Post onAddPost={onAddPost} imgUrl={props.imgUrl} />
 };
-let mapStateToProps = (state) => {
-    return {
-        imgUrl: state.profile_page.user_data.imgUrl
-            ? state.profile_page.user_data.imgUrl
-            : state.auth_data.user_data_default.imgUrl,
 
-    }
-};
+let mapStateToProps = (state) => ({imgUrl: state.auth_data.photos.small,})
 
 export default connect(mapStateToProps, { addPostAC, reset })(Profile_New_Post_Container);
