@@ -10,8 +10,8 @@ import { compose } from 'redux';
 
 class Login extends React.Component {
     onSubmit = (formData) => {
-        let a = { ...formData, captcha: true }
-        let promise = this.props.loginTC(a);
+        let login_data = { ...formData, captcha: true }
+        let promise = this.props.loginTC(login_data);
         Promise.all([promise])
             .then((result_code) => {
                 if (result_code[0] === 0) {

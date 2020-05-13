@@ -8,21 +8,21 @@ import { connect } from 'react-redux';
 
 
 const Chats = (props) => {
-    const getPathForMessages = ()=>{
-        if(props.device === "mobile" ){     
-            return "/chats/messages/:user_id" 
+    const getPathForMessages = () => {     
+        if (props.device === "mobile") {
+            return "/chats/messages/:user_id"
         } return "/chats/:user_id"
     }
     return (
         <div className={s.chats}>
             <div className="row">
-                {props.device == "mobile" 
-                ?  <Route exact path="/chats" render={() => <Dialogs/>} />
-                : <Dialogs />
+                {props.device == "mobile"
+                    ? <Route exact path="/chats" render={() => <Dialogs />} />
+                    : <Dialogs />
                 }
                 <Route path={getPathForMessages()}
-                    render={() => <Messages_Container/>} />
-                <Route exact path={props.device == "mobile" ?  "/messages" : "/chats"}>
+                    render={() => <Messages_Container />} />
+                <Route exact path={props.device == "mobile" ? "/messages" : "/chats"}>
                     <h1 className={s.preview}>Start messaging...</h1>
                 </Route>
             </div>
@@ -30,5 +30,5 @@ const Chats = (props) => {
     );
 
 };
-const mapStateToProps = (state) =>({device:state.app.device})
-export default connect(mapStateToProps,{})(Chats);
+const mapStateToProps = (state) => ({ device: state.app.device })
+export default connect(mapStateToProps, {})(Chats);

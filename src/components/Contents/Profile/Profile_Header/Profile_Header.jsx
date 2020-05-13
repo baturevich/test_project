@@ -4,6 +4,7 @@ import Profile_Status from './Profile_Status'
 import { NavLink, } from 'react-router-dom';
 import Profile_Info from './Profile_info/Profile_jnfo';
 import Profile_Photo from './Profile_Photo';
+import Profile_Counter from './Profile_Counter';
 
 const Profile_Header = (props) => {
   return (
@@ -28,22 +29,10 @@ const Profile_Header = (props) => {
             <Profile_Status status_data={props.status_data} upStatusDataTC={props.upStatusDataTC} />
           </div>
           <div className={`${s.main_info_item}`}>
-          <Profile_Info />  
+          <Profile_Info user_data={props.user_data} device={props.device} isOwner={props.isOwner} 
+            updateProfileInfoTC={props.updateProfileInfoTC}/>  
           </div>
-          <div className={`${s.profile__item} ${s.short_data_content} ${s.main_info_item}`}>
-            <div className={s.profile_data}>
-              <p className={s.profile_data__number}>{props.user_data.posts_count || "1"}</p>Posts
-                </div>
-            <div className={s.profile_data}>
-              <p className={s.profile_data__number}>{props.user_data.music_count || "64"}</p>Music
-                </div>
-            <div className={s.profile_data}>
-              <p className={s.profile_data__number}>{props.user_data.videos_count || "3"}</p>Videos
-                </div>
-            <div className={s.profile_data}>
-              <p className={s.profile_data__number}>{props.user_data.followers_count || "137"}</p>Followers
-                </div>
-          </div>
+          <Profile_Counter user_data={props.user_data} posts_data={props.posts_data}/>
           </div>
         </div>
       </div>
@@ -51,4 +40,4 @@ const Profile_Header = (props) => {
   );
 };
 
-export default Profile_Header;
+export default  Profile_Header;

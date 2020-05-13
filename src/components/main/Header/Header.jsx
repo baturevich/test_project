@@ -9,7 +9,7 @@ const Header = (props) => {
         <NavLink to="/vision" className={s.header__logo}>Vision.com</NavLink>
         <div className={`${s.input_wrapper}`}>
           <input type="text" className={s.search_input} placeholder="Search" />
-          <a href="#" className={s.search_btn}><i className="fa fa-search"></i></a>
+          <NavLink to="/vision"  className={s.search_btn}><i className="fa fa-search"></i></NavLink>
         </div>
         <div className={s.user_ungle}>
           <a href="" className={s.user_notification}><i className="fa fa-bell-o"></i></a>

@@ -1,5 +1,6 @@
 import { ProfileAPI } from "../API/Api";
 import { GetCurrentDate } from "../utils/GetCurrentDate/GetCurrentDate";
+import { stopSubmit } from "redux-form";
 
 const ADD_POST = "profile/ADD_POST";
 const IS_LOADING = "profile/IS_LOADING";
@@ -141,6 +142,18 @@ export const uploadPhotoTC = (photo) =>{
     return async (dispatch)=>{
         let response = await ProfileAPI.uploadPhoto(photo)
         dispatch(setProfilePhoto(response.data.data.photos))
+    }
+}
+export const updateProfileInfoTC = (data)=>{
+    return async (dispatch,getState)=>{
+        const user_id = getState().auth_data.data.id
+        let response = await ProfileAPI.upProfileInfo(data)
+        if(response.data.resultCode == 0){
+            dispatch(getProfileDataTC(user_id))
+        } else{
+            dispatch(stopSubmit("edit_profile_info", { _error: response.data.messages[0] }));
+        }
+       
     }
 }
 export default profilePageReducer;

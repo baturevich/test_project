@@ -28,7 +28,8 @@ const Profile_Photo = (props) => {
                     <p className={s.setting_text}>Setting photo...</p>
                 </div>
                 : <> <img src={
-                    props.user_data.photos.large} alt="User_img" className={s.profile__img} />
+                        props.user_data.photos.large || "https://baturevich.ru/images/cn/user2.jpg"} 
+                        alt="User_img" className={s.profile__img} />
                     {props.match.params.user_id == props.auth_user_id &&
                         <label className={s.upload_photo}>
                             <i className="material-icons">get_app</i>
