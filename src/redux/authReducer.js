@@ -6,6 +6,7 @@ const IS_LOADING = "auth/IS_LOADING";
 const SET_AUTH_DATA = "auth/SET_AUTH_DATA";
 const SET_AUTH_PHOTOS = "auth/SET_AUTH_PHOTOS"
 const SET_AUTH_USER_DATA = "auth/SET_AUTH_USER_DATA";
+const GET_CAPTCHA_URL_SUCCES = 'auth/GET_CAPTCHA_URL_SUCCES';
 
 let initialState = {
     data :{},
@@ -22,6 +23,7 @@ let initialState = {
         music_count: 15,
         videos_count: 9,
     },
+    captcha_url: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -30,12 +32,11 @@ const authReducer = (state = initialState, action) => {
             return{...state, isLoading: action.answer}
         }
         case SET_AUTH_USER_DATA :{
-            return{
-                ...state,
-                data: action.auth_data,
-                isAuth: true,
-            }
-        }  
+            return{...state, data: action.auth_data, isAuth: true,}
+        } 
+        case GET_CAPTCHA_URL_SUCCES:{
+            return{...state, captcha_url: action.captcha_url }
+        } 
         case SET_AUTH_DATA:{
             return{...state, isAuth: action.answer}
         }
@@ -55,6 +56,8 @@ export const isLoadingAC = (answer) => ({type: IS_LOADING, answer});
 export const setAuthData = (answer)=>({type: SET_AUTH_DATA, answer});
 export const setAuthPhoto = (photos) => ({type: SET_AUTH_PHOTOS, photos});
 export const setAuthUserDataAC = (auth_data) => ({type: SET_AUTH_USER_DATA, auth_data});
+export const getCaptchaUrlSucces = (captcha_url) =>({type: GET_CAPTCHA_URL_SUCCES, captcha_url})
+
 
 // Thanks Creators
 export const getAuthDataTC = () =>{
@@ -75,6 +78,10 @@ export const loginTC = (login_data)=>{
             dispatch(isLoadingAC(false));
         }
         else {
+            if(response.data.resultCode == 10){
+               const response = await AuthAPI.getCaptchaURL()
+               dispatch(getCaptchaUrlSucces(response.data.url))
+            }
             dispatch(stopSubmit("login", { _error: response.data.messages[0] }));
         }
         return response.data.resultCode;
@@ -82,18 +89,16 @@ export const loginTC = (login_data)=>{
 }
 export const reqAuthPhoto = (user_id) =>{
     return async (dispatch)=>{
-        let response  = await ProfileAPI.getProfileData(user_id)
+        const response  = await ProfileAPI.getProfileData(user_id)
             dispatch(setAuthPhoto(response.data.photos))    
     }
 }
 export const deLoginTC = ()=>{
-    return(dispatch)=>{
-        AuthAPI.deAuthorize()
-            .then(response=>{
-                if(response.data.resultCode == 0 ){
-                    dispatch(setAuthData(false))
-                }             
-        })
+    return async (dispatch)=>{
+       const response = await AuthAPI.deAuthorize()
+            if(response.data.resultCode == 0 ){
+                dispatch(setAuthData(false))
+            }             
     }
 }
 export default authReducer;

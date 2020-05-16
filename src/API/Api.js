@@ -53,12 +53,15 @@ export const ProfileAPI ={
 
 export const AuthAPI = {
     getAuthData(){
-        return instance.get('auth/me')
+        return instance.get(`auth/me`)
     },
     authorize(login_data){
         return instance.post(`auth/login`, login_data)
     },
     deAuthorize(){
         return instance.delete(`auth/login`,)
+    },
+    getCaptchaURL(){
+        return instance.get(`security/get-captcha-url`,)
     }
 };

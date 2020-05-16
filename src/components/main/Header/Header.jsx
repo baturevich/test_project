@@ -9,12 +9,13 @@ const Header = (props) => {
         <NavLink to="/vision" className={s.header__logo}>Vision.com</NavLink>
         <div className={`${s.input_wrapper}`}>
           <input type="text" className={s.search_input} placeholder="Search" />
-          <NavLink to="/vision"  className={s.search_btn}><i className="fa fa-search"></i></NavLink>
+          <NavLink to="/vision" className={s.search_btn}><i className="fa fa-search"></i></NavLink>
         </div>
         <div className={s.user_ungle}>
-          <a href="" className={s.user_notification}><i className="fa fa-bell-o"></i></a>
+          <a href="##" className={s.user_notification}><i className="fa fa-bell-o"></i></a>
           <NavLink to={`/profile/${props.user_id}`} className={s.profile_name}>{props.name}</NavLink>
-          <img src={props.imgUrl} alt="profile-picture" className={s.profile_img} />
+          <img src={props.imgUrl} 
+            className={props.imgUrl ? s.profile_img : s.profile_img_none} />
           <button className={s.logout} onClick={props.deLoginTC} >Log Out</button>
         </div>
       </div>

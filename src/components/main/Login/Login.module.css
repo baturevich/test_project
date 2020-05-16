@@ -91,6 +91,23 @@
 .some_error span{
    color:#e90028;
 }
+.captcha{
+    margin: 0 auto;
+    text-align: center;
+}
+.captcha img{
+    margin: 0 auto;
+} 
+.captcha input{
+    margin-top: 10px;
+    border: none;
+    border-bottom: 1px solid #f1f1f1;
+} 
+.captcha input::placeholder{
+    text-align: center;
+    font-size: 12px;
+}
+
 @media screen and (max-width:768px){
     .login{
         background: #fff;

@@ -22,7 +22,7 @@ class App extends React.Component {
             <Route path='/login' render={() => <Login />} />
           </>
         )
-      } return (<SocNet />);
+      } return <SocNet />;
     }
   };
 }

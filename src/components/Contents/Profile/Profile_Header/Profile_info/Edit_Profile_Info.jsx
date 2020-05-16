@@ -5,17 +5,10 @@ import { reduxForm, Field } from 'redux-form';
 const Edit_Profile_Info = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={s.edit_mode}>
-            <button className={props.device != "mobile"? s.edit_info : s.edit_info_mobile}>
-                <i className="material-icons">done</i>Save
-            </button>
-            <span className={props.device != "mobile" ? s.close_edit_info : s.close_edit_info_mobile} 
-                onClick={()=>props.setEditMode(false)}>
-                <i className="material-icons">exit_to_app</i>Close</span>
             <div className={s.user_features}>
                 <div className={s.user_data_names}>
                     <p>About me:</p>
                     <p>look for work:</p>
-                    <p>look for work description:</p>
                     <div className={s.contacts_block}>
                         {Object.keys(props.user_data.contacts).map(key => <p key={Math.random()*10}>{key}:</p>)}
                     </div>
@@ -26,8 +19,6 @@ const Edit_Profile_Info = (props) => {
                         <Field name={'lookingForAJob'} type="checkbox" component="input" />
                         <span className={s.slider}></span>
                     </label>
-                    <Field name={'lookingForAJobDescription'} type="text" component="input" />
-                    
                     {Object.keys(props.user_data.contacts).map(key => (
                     <Field key={Math.random()*10} name={'contacts.'+ key} type="text" component="input"  />
                     ))}   
@@ -37,7 +28,10 @@ const Edit_Profile_Info = (props) => {
                     <span>{props.error}</span>
                 </div>
                 }  
-            </div> 
+            </div>
+            <button className={s.save_edit_info}>
+                <i className="material-icons">done</i>Save
+            </button> 
         </form>
     );
 }

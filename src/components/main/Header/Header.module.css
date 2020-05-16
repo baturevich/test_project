@@ -49,6 +49,9 @@
     height: 40px;
     border-radius: 100%;
   }
+  .profile_img_none{
+    background: #fff;
+  }
   .profile_name{
     color: #63656b;
     margin-right: 10px;

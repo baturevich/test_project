@@ -10,7 +10,7 @@ import { compose } from 'redux';
 
 class Login extends React.Component {
     onSubmit = (formData) => {
-        let login_data = { ...formData, captcha: true }
+        let login_data = { ...formData}
         let promise = this.props.loginTC(login_data);
         Promise.all([promise])
             .then((result_code) => {
@@ -31,7 +31,7 @@ class Login extends React.Component {
                             </div>
                         </div>
                         <div className="col-md-6 col-xs-12">
-                            <LoginReduxForm onSubmit={this.onSubmit} />
+                            <LoginReduxForm onSubmit={this.onSubmit}  captchaUrl={this.props.captchaUrl} />
                         </div>
                     </div>
                 </div>
@@ -59,6 +59,13 @@ const LoginForm = (props) => {
                 <div className={props.error && s.some_error}>
                     <span>{props.error}</span>
                 </div>
+                { props.captchaUrl &&
+                    <div className={ s.captcha}>
+                    <img src={props.captchaUrl} alt="captcha"/>
+                    <Field placeholder="Enter the captcha symbols..." type={'text'} 
+                        name={'captcha'} component={'input'} />
+                </div>
+                }
                 <div className={s.buttons}>
                     <button>Log In</button>
                     <button>Sign In</button>
@@ -72,6 +79,7 @@ const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 const mapStateToprops = (state) => {
     return {
         state: state,
+        captchaUrl: state.auth_data.captcha_url,
         auth_user_id: state.auth_data.data.id,
     }
 }
