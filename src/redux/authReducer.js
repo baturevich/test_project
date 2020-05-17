@@ -63,7 +63,7 @@ export const getCaptchaUrlSucces = (captcha_url) =>({type: GET_CAPTCHA_URL_SUCCE
 export const getAuthDataTC = () =>{
     return async (dispatch)=>{
      const response = await AuthAPI.getAuthData();
-        if (response.data.resultCode == 0) {
+        if (response.data.resultCode === 0) {
             dispatch(setAuthUserDataAC(response.data.data));
             dispatch(reqAuthPhoto(response.data.data.id));
             dispatch(setAuthData(true));
