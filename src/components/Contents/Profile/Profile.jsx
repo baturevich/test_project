@@ -16,6 +16,7 @@ const Profile = (props) => {
     useEffect(() => {
         props.getProfileDataTC(props.match.params.user_id);
     }, [props.match.params.user_id])
+    
     return (
         <div className={s.profile}>
             <Profile_Header_Container />

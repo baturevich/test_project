@@ -192,12 +192,10 @@
 .more_info i{
   margin-left: 3px;
 }
-
 .more_item {
   display: flex;
   align-self: center;
 }
-
 .user_features{
   display: flex;
   margin-bottom: 10px;
@@ -211,14 +209,12 @@
 .user_features p:last-child{
   margin-bottom: 5px;
 }
-
 .answers_list{
   margin-left: 20px;
 }
 .contacts_item{
   text-transform: capitalize;
 }
-
 .hide_more {
   margin-left: auto;
   background: transparent;

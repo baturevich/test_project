@@ -65,6 +65,8 @@ export const getAuthDataTC = () =>{
      const response = await AuthAPI.getAuthData();
         if (response.data.resultCode == 0) {
             dispatch(setAuthUserDataAC(response.data.data));
+            dispatch(reqAuthPhoto(response.data.data.id));
+            dispatch(setAuthData(true));
         }
     }
 }
@@ -74,8 +76,8 @@ export const loginTC = (login_data)=>{
         dispatch(isLoadingAC(true))
        const response = await AuthAPI.authorize(login_data);
         if (response.data.resultCode == 0) {
-            dispatch(setAuthData(true));
             dispatch(isLoadingAC(false));
+            dispatch(getAuthDataTC());
         }
         else {
             if(response.data.resultCode == 10){

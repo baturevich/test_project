@@ -1,6 +1,7 @@
 import { ProfileAPI } from "../API/Api";
 import { GetCurrentDate } from "../utils/GetCurrentDate/GetCurrentDate";
 import { stopSubmit } from "redux-form";
+import { setGlobalErrorAC } from "./appReducer";
 
 const ADD_POST = "profile/ADD_POST";
 const IS_LOADING = "profile/IS_LOADING";
@@ -125,9 +126,13 @@ export const getStatusDataTC = (user_id)=>{
 
 export const upStatusDataTC = (new_status_data)=>{
     return async (dispatch) =>{
-        let response = await ProfileAPI.upStatusData(new_status_data)
-        if(response.data.resultCode == 0){
-            dispatch(setStatusData(new_status_data))
+        try{
+            let response = await ProfileAPI.upStatusData(new_status_data)
+            if(response.data.resultCode == 0){
+                dispatch(setStatusData(new_status_data))
+            } 
+        } catch(error){
+            dispatch(setGlobalErrorAC(error.message))
         }      
     }
 };

@@ -7,15 +7,17 @@ import { compose } from 'redux';
 import { uploadPhotoTC } from '../../../../redux/profilePageReducer';
 import { useState } from 'react';
 import { reqAuthPhoto } from '../../../../redux/authReducer';
+import { useEffect } from 'react';
 
 const Profile_Photo = (props) => {
     let [settingPhoto, setSettingPhoto] = useState(false)
+    useEffect(()=>{
+
+    })
     const onUploadPhoto = (e) => {
         if (e.target.files.length) {
             setSettingPhoto(true)
-            let promise = props.uploadPhotoTC(e.target.files[0])
-            Promise.all([promise])
-                .then(()=>{
+            props.uploadPhotoTC(e.target.files[0]).then(()=>{
                     setSettingPhoto(false)
                     reqAuthPhoto(props.auth_user_id)
                 })

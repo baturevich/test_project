@@ -8,7 +8,7 @@ import Navigation_Container from './Navigation/Navigation_Container';
 
 class SocNet extends React.Component {
     componentDidMount() {
-        this.props.getAuthDataTC().then(this.props.reqAuthPhoto(this.props.auth_user_id))
+        this.props.getAuthDataTC()
     }
     render() {
         return (

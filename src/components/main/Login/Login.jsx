@@ -10,11 +10,9 @@ import { compose } from 'redux';
 
 class Login extends React.Component {
     onSubmit = (formData) => {
-        let login_data = { ...formData}
-        let promise = this.props.loginTC(login_data);
-        Promise.all([promise])
-            .then((result_code) => {
-                if (result_code[0] === 0) {
+        const login_data = { ...formData}
+        this.props.loginTC(login_data).then((result_code) => {
+                if (result_code === 0) {
                     this.props.history.push(`/profile/${+ this.props.auth_user_id}`)
                 }
             })
