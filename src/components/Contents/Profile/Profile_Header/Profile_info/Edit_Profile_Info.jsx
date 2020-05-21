@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '../Profile_Header.module.css';
+import s from '../Profile_Header.module.scss';
 import { reduxForm, Field } from 'redux-form';
 
 const Edit_Profile_Info = (props) => {

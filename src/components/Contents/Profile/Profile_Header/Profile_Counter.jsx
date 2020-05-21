@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Profile_Header.module.css';
+import s from './Profile_Header.module.scss';
 const Profile_Counter = (props)=>{
     return(
         <div className={`${s.profile__item} ${s.short_data_content} ${s.main_info_item}`}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Profile_Header.module.css';
+import s from './Profile_Header.module.scss';
 import Profile_Status from './Profile_Status'
 import { NavLink, } from 'react-router-dom';
 import Profile_Info from './Profile_info/Profile_jnfo';

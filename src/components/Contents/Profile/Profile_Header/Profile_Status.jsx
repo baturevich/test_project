@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import s from './Profile_Header.module.css';
+import s from './Profile_Header.module.scss';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';

@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '../Profile_Header.module.css';
+import s from '../Profile_Header.module.scss';
 import Edit_Profile_Info from './Edit_Profile_Info';
 
 const Profile_Info = (props) => {
