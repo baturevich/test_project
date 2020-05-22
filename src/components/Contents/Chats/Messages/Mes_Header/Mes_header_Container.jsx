@@ -3,7 +3,7 @@ import Mes_Header from './Mes_header';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addMessAC, getMessagesDataTC } from '../../../../../redux/chatsPageReducer';
+import {  getMessagesDataTC } from '../../../../../redux/chatsPageReducer';
 
 const Mes_header_Container = (props) => {
     return <Mes_Header name={props.name}
@@ -20,4 +20,4 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-    connect(mapStateToProps, { addMessAC, getMessagesDataTC }), withRouter)(Mes_header_Container)
+    connect(mapStateToProps, { getMessagesDataTC }), withRouter)(Mes_header_Container)

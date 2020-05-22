@@ -8,19 +8,23 @@ const SET_DIALOGS_DATA = "SET_DIALOGS_DATA";
 const SET_MESSAGES_DATA ="SET_MESSAGES_DATA";
 const IS_LOADING = "IS_LOADING";
 
+type MessagesDataType ={id: number, name: string, text: string, date: string, imgUrl: string}
 
 let initialState = {
-    dialogs_data: [],
+    dialogs_data: [] as Array<{}> ,
     messages_data: [{
         id: Math.random()*3,
         name: "Kirill Baturevich",
         text: "mess_text",
         date: "12:09",
-        imgUrl: "https://baturevich.ru/images/cn/user2.jpg",},],
+        imgUrl: "https://baturevich.ru/images/cn/user2.jpg",},] as Array<MessagesDataType>,
     mes_header_data: {},
     isLoading:false,
 };
-const chatsPageReducer = (state = initialState, action) => {
+
+export type InitialStateType = typeof initialState;
+
+const chatsPageReducer = (state = initialState, action:any):InitialStateType => {
     switch (action.type) {
         case IS_LOADING:{
             return {
@@ -64,27 +68,37 @@ const chatsPageReducer = (state = initialState, action) => {
     };
 };
 //Actions Creators
-export const isLoadingAC = (answer)=>({type: IS_LOADING, answer});
-export const addMessAC = (mess_text) => ({type: ADD_MESS, mess_text});
-export const delMessAC = (mess_id) => ({type: DELETE_MESSAGE, mess_id : mess_id});
-export const setDialogsDataAC = (users) =>({type: SET_DIALOGS_DATA, users});
-export const setMessagesDataAC = (mes_data)=>({type: SET_MESSAGES_DATA, mes_data});
+type IsLoadingType = {type: typeof IS_LOADING, answer: boolean }
+export const isLoading = (answer:boolean):IsLoadingType =>({type: IS_LOADING, answer});
+
+type AddMessType={type: typeof ADD_MESS, mess_text: string}
+export const addMess = (mess_text:string):AddMessType => ({type: ADD_MESS, mess_text});
+
+type DelMessType = {type: typeof DELETE_MESSAGE, mess_id: number}
+export const delMess = (mess_id:number):DelMessType => ({type: DELETE_MESSAGE, mess_id : mess_id});
+
+type SetDialogsDataType ={type: typeof SET_DIALOGS_DATA, users: [] }
+export const setDialogsData = (users: [] ):SetDialogsDataType =>({type: SET_DIALOGS_DATA, users});
+
+type SetMessagesDataType = {type:typeof SET_MESSAGES_DATA, mes_data: MessagesDataType }
+export const setMessagesData = (mes_data: MessagesDataType):SetMessagesDataType =>(
+    {type: SET_MESSAGES_DATA, mes_data});
 
 //Thunks Creators
-export const getDialogsDataTC = (page,page_size) =>{
-    return async(dispatch) =>{
-        dispatch(isLoadingAC(true));
+export const getDialogsDataTC = (page: number, page_size: number) =>{
+    return async(dispatch:any) =>{
+        dispatch(isLoading(true));
         let  data  = await UserAPI.getUsers(page,page_size)
-        dispatch(isLoadingAC(false));
-        dispatch(setDialogsDataAC(data.items))
+        dispatch(isLoading(false));
+        dispatch(setDialogsData(data.items))
     }
 };
-export const getMessagesDataTC = (user_id) =>{
-    return async(dispatch)=>{
-        dispatch(isLoadingAC(true));
+export const getMessagesDataTC = (user_id:number) =>{
+    return async(dispatch:any)=>{
+        dispatch(isLoading(true));
         let response = await ProfileAPI.getProfileData(user_id)
-        dispatch(isLoadingAC(false));
-        dispatch(setMessagesDataAC(response.data))
+        dispatch(isLoading(false));
+        dispatch(setMessagesData(response.data))
     }
 };
 

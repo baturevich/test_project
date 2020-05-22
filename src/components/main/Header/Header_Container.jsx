@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header.jsx';
 import { connect } from 'react-redux';
-import { deLoginTC } from '../../../redux/authReducer.js';
+import { deLoginTC } from '../../../redux/authReducer';
 class Header_Container extends React.Component{
     render(){
         return <Header {...this.props}/>

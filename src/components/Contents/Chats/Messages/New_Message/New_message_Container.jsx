@@ -1,12 +1,12 @@
 import React from 'react';
-import { addMessAC } from '../../../../../redux/chatsPageReducer';
+import { addMess } from '../../../../../redux/chatsPageReducer';
 import { connect } from 'react-redux';
 import New_MessageFormRedux from './New_Message';
 import { reset } from 'redux-form';
 
 class New_Message_Container extends React.Component {
     onAddMess = (values) => {
-        this.props.addMessAC(values.newMessText);
+        this.props.addMess(values.newMessText);
         this.props.reset('New_MessageForm');
     }
     render() {
@@ -16,4 +16,4 @@ class New_Message_Container extends React.Component {
 
 
 
-export default connect(null, { addMessAC, reset })(New_Message_Container);
+export default connect(null, { addMess, reset })(New_Message_Container);

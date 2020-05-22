@@ -26,7 +26,7 @@ class App extends React.Component {
         )
       } return(
         <>
-          <GlobalError global_errors={this.props.global_errors}/>}
+          <GlobalError global_errors={this.props.global_errors}/>
           <SocNet />
         </>
       )
@@ -42,5 +42,7 @@ const mapStateToProps = (state) => {
     global_errors: state.app.global_errors,
   }
 };
+
+
 
 export default compose(connect(mapStateToProps, { initializeTC, }), withRouter)(App);
