@@ -2,10 +2,11 @@ import React from 'react';
 import s from './Users.module.css'
 import { getUsersTC, followTC, unFollowTC } from '../../../redux/usersPageReducer';
 import { connect } from 'react-redux';
-import User_Item from './User_Item/User_Item';
+import UserItem from './UserItem/UserItem';
 import { useEffect } from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import Pagination from '../../common/Pagination/Pagination';
+
 const Users = (props) => {
     useEffect(()=>{
         props.getUsersTC(props.currentPage, props.pageSize)
@@ -32,7 +33,7 @@ const Users = (props) => {
                     {props.isLoading 
                     ? <Preloader/>
                     :props.users.map(user => (
-                        <User_Item key={Math.random()*3}user={user}
+                        <UserItem key={Math.random()*3}user={user}
                             unFollowedUser={unFollowedUser}
                             followedUser={followedUser}
                             followInProgress={props.followInProgress}

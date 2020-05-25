@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getAuthDataTC, reqAuthPhoto } from '../../redux/authReducer';
 import Content from './Content/Content';
-import Header_Container from './Header/Header_Container';
-import Navigation_Container from './Navigation/Navigation_Container';
+import HeaderContainer from './Header/HeaderContainer';
+import NavigationContainer from './Navigation/NavigationContainer';
 
 
 class SocNet extends React.Component {
@@ -13,9 +13,9 @@ class SocNet extends React.Component {
     render() {
         return (
             <div className="CN_wrapper">
-                <Header_Container />
+                <HeaderContainer />
                 <Content />
-                <Navigation_Container />
+                <NavigationContainer />
             </div>
         )
     }

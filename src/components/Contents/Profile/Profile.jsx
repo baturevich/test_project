@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import s from './Profile.module.css';
-import Profile_Content from './Profile_Content/Profile_Content';
-import Profile_Header_Container from './Profile_Header/Profile_Header_Container';
+import ProfileContent from './ProfileContent/ProfileContent'
+import ProfileHeaderContainer from './ProfileHeader/ProfileHeaderContainer';
 import { getStatusDataTC, getProfileDataTC } from '../../../redux/profilePageReducer';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
@@ -19,8 +19,8 @@ const Profile = (props) => {
     
     return (
         <div className={s.profile}>
-            <Profile_Header_Container />
-            <Profile_Content />
+            <ProfileHeaderContainer />
+            <ProfileContent />
         </div>
     );
 }
