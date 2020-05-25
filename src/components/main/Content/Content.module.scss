@@ -45,7 +45,7 @@
 }
 .started{
     display: block;
-    margin: 0 auto;
+    margin-right: auto;
     max-width: 120px;
     text-align: center;
     font-size: 14px;
@@ -55,4 +55,9 @@
     color: #fff !important;
     border: 2px solid transparent;
     transition: all .2s ease;
+}
+@media screen and(max-width: 768px){
+    .started{
+        margin: 0 auto;
+    }
 }
