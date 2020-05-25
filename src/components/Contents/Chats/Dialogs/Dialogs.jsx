@@ -6,6 +6,7 @@ import { compose } from 'redux';
 import { getDialogsDataTC } from '../../../../redux/chatsPageReducer';
 import Dialog from './Dialog/Dialog';
 
+
 const Dialogs = (props) => {
     useEffect(()=>{
         props.getDialogsDataTC(1, 10)

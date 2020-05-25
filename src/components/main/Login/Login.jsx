@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Login.module.css'
 import { reduxForm, Field } from 'redux-form';
-import { loginTC, } from '../../../redux/authReducer';
+import { loginTC, setAuthData, } from '../../../redux/authReducer';
 import { requiared, maxLength } from '../../../utils/validators';
 import InputLoginControl from '../../common/FormControls/FormLoginControl';
 import { connect } from 'react-redux';
@@ -10,6 +10,7 @@ import { compose } from 'redux';
 
 class Login extends React.Component {
     componentDidMount(){
+   
         //Here this props:
         // auth_user_id: undefined
         // captchaUrl: null
@@ -23,9 +24,8 @@ class Login extends React.Component {
     onSubmit = (formData) => {
         const login_data = { ...formData}
         this.props.loginTC(login_data).then((result_code) => {
-            // here only "result_code"
                 if (result_code === 0) {
-                    this.props.history.push(`/profile/${+ this.props.auth_user_id}`)
+                    this.props.history.push(`/vision`)
                 }
             })
     }
@@ -49,9 +49,9 @@ class Login extends React.Component {
         );
     }
 };
+
 const maxLength50 = maxLength(50);
 const LoginForm = (props) => {
-    debugger;
     return (
         <div className={s.form_wrapper}>
             <form className={s.form_login} onSubmit={props.handleSubmit}>
@@ -93,6 +93,6 @@ const mapStateToprops = (state) => {
         auth_user_id: state.auth_data.data.id,
     }
 }
-export default compose(connect(mapStateToprops, { loginTC,  }),
+export default compose(connect(mapStateToprops, { loginTC, setAuthData }),
     withRouter,
 )(Login)

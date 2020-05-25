@@ -32,7 +32,7 @@ const authReducer = (state = initialState, action:any):InitialStateType => {
             return{...state, isLoading: action.answer}
         }
         case SET_AUTH_USER_DATA :{
-            return{...state, data: action.auth_data, isAuth: true,}
+            return{...state, data: action.auth_data, isAuth: true}
         } 
         case GET_CAPTCHA_URL_SUCCES:{
             return{...state, captcha_url: action.captcha_url }
@@ -77,8 +77,8 @@ export const getAuthDataTC = () =>{
         if (response.data.resultCode === 0) {
             dispatch(setAuthUserData(response.data.data));
             dispatch(reqAuthPhoto(response.data.data.id));
-            dispatch(setAuthData(true));
-        }
+            return true
+        } return  false
     }
 }
 
@@ -86,9 +86,10 @@ export const loginTC = (login_data: Object)=>{
     return async (dispatch: any)=>{
         dispatch(isLoading(true))
        const response = await AuthAPI.authorize(login_data);
-        if (response.data.resultCode == 0) {
+         if (response.data.resultCode == 0) {
             dispatch(isLoading(false));
             dispatch(getAuthDataTC());
+
         }
         else {
             if(response.data.resultCode == 10){
@@ -97,7 +98,7 @@ export const loginTC = (login_data: Object)=>{
             }
             dispatch(stopSubmit("login", { _error: response.data.messages[0] }));
         }
-        return response.data.resultCode;
+        return response.data.resultCode 
     }  
 }
 export const reqAuthPhoto = (user_id: number ) =>{

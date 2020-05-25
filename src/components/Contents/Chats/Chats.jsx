@@ -16,7 +16,7 @@ const Chats = (props) => {
     return (
         <div className={s.chats}>
             <div className="row">
-                {props.device == "mobile"
+                {props.device === "mobile"
                     ? <Route exact path="/chats" render={() => <Dialogs />} />
                     : <Dialogs />
                 }
