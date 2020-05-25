@@ -1,6 +1,4 @@
 import React from 'react';
-import s from './Profile_Content.module.css';
-import Profile_Left_Side from './Profile_Left_Side/Profile_Left_Side';
 import Profile_Posts from './Profile_Posts/Profile_Posts';
 
 

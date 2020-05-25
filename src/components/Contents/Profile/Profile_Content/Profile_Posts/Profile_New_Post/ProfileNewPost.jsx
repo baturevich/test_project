@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Profile_New_Post.module.css';
+import s from './ProfileNewPost.module.css';
 import { reduxForm, Field } from 'redux-form';
 
 

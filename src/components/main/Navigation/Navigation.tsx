@@ -1,8 +1,11 @@
 import React from 'react';
 import s from './Navigation.module.css';
 import { NavLink } from 'react-router-dom';
+import { DeviceType } from '../../../redux/appReducer';
 
-const Navigation = (props) => {
+type PropsType = {user_id: number,device: DeviceType}
+
+const Navigation: React.FC<PropsType> = (props) => {
   return (
     <section className="navigation">
       <ul className={s.menu}>

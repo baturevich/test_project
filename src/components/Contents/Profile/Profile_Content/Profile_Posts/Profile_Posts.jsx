@@ -1,17 +1,17 @@
 import React from 'react';
 import s from './Profile_Posts.module.css'
-import Profile_New_Post_Container from './Profile_New_Post/Profile_New_Post_Container';
+import ProfileNewPostContainer from './ProfileNewPost/ProfileNewPostContainer';
 import { connect } from 'react-redux';
-import Profile_Post_Container from './Profile_Post/Profile_Post_Container';
+import ProfilePostContainer from './ProfilePost/ProfilePostContainer';
 
 
 const Profile_Posts = (props) => {
     return (
         <div className={`${s.content} col-sm-7`}>
-            <Profile_New_Post_Container />
+            <ProfileNewPostContainer />
 
             {[...props.profile_page.posts_data].reverse().map(post => (
-            <Profile_Post_Container key={Math.random() *10 } post={post}/>)
+            <ProfilePostContainer key={Math.random() *10 } post={post}/>)
             )}
         </div>
     )

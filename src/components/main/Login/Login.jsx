@@ -9,9 +9,21 @@ import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 
 class Login extends React.Component {
+    componentDidMount(){
+        //Here this props:
+        // auth_user_id: undefined
+        // captchaUrl: null
+        // history: {length: 2, action: "REPLACE", location: {…}, createHref: ƒ, push: ƒ, …}
+        // location: {pathname: "/login", search: "", hash: "", state: undefined}
+        // loginTC: ƒ ()
+        // match: {path: "/login", url: "/login", isExact: true, params: {…}}
+        // state: {profile_page: {…}, chats_page: {…}, header: {…}, users_page: {…}, auth_data: {…}, …}
+        // staticContext:
+    }
     onSubmit = (formData) => {
         const login_data = { ...formData}
         this.props.loginTC(login_data).then((result_code) => {
+            // here only "result_code"
                 if (result_code === 0) {
                     this.props.history.push(`/profile/${+ this.props.auth_user_id}`)
                 }
@@ -39,6 +51,7 @@ class Login extends React.Component {
 };
 const maxLength50 = maxLength(50);
 const LoginForm = (props) => {
+    debugger;
     return (
         <div className={s.form_wrapper}>
             <form className={s.form_login} onSubmit={props.handleSubmit}>
@@ -76,7 +89,6 @@ const LoginForm = (props) => {
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 const mapStateToprops = (state) => {
     return {
-        state: state,
         captchaUrl: state.auth_data.captcha_url,
         auth_user_id: state.auth_data.data.id,
     }

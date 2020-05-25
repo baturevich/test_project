@@ -1,8 +1,15 @@
-import React from 'react';
+import React  from 'react';
 import s from './Header.module.css';
 import { NavLink } from 'react-router-dom';
 
-const Header = (props) => {
+type PropsType = {
+  name: string,
+  imgUrl: string,
+  user_id: number,
+  deLoginTC: ()=> void
+}
+
+const Header: React.FC<PropsType>=  (props) => {
   return (
     <header className="header">
       <div className={s.header__wrapper}>
@@ -22,4 +29,5 @@ const Header = (props) => {
     </header>
   );
 };
+
 export default Header;

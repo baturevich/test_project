@@ -7,10 +7,12 @@ const SET_GLOBAL_ERROR = "app/SET_GLOBAL_ERROR";
 
 
 type GlobalErrorsType = Array<{}>;
+export type DeviceType =  "desktop" | "mobile"
+
 
 let initialState = {
     initialized: false,
-    device: null as "desktop" | "mobile" | null ,
+    device: "desktop" as DeviceType ,
     global_errors: [] as GlobalErrorsType ,
 };
 export type InitialStateType = typeof initialState;
